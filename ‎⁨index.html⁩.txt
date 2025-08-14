@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: USERNAME/klaf-help-center
+  branch: main
+media_folder: "assets/images"
+public_folder: "/assets/images"
+collections:
+  - name: "faq"
+    label: "الأسئلة الشائعة"
+    folder: "content/faq"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "السؤال", name: "question", widget: "string"}
+      - {label: "الإجابة", name: "answer", widget: "text"}
+  - name: "tips"
+    label: "النصائح"
+    folder: "content/tips"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "عنوان النصيحة", name: "title", widget: "string"}
+      - {label: "المحتوى", name: "content", widget: "text"}
