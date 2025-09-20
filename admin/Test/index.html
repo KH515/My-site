@@ -1,32 +1,101 @@
-<form id="bulkForm">
-  <!-- الحقول كما في النموذج السابق -->
-  ...
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نموذج طلبات الجملة - كلاف</title>
+<style>
+  body { font-family: 'Cairo', sans-serif; background-color: #EEEEEE; margin:0; padding:20px; }
+  header { display:flex; justify-content:center; align-items:center; background:white; padding:15px 20px; box-shadow:0 0 5px rgba(0,0,0,0.1); margin-bottom:20px; border-radius:10px; }
+  header img { height:50px; margin-left:15px; }
+  h1 { text-align:center; color:#FF835E; margin-bottom:20px; }
+  form { background:white; padding:20px; border-radius:15px; max-width:700px; margin:auto; box-shadow:0 0 8px rgba(0,0,0,0.1); }
+  label { display:block; margin:10px 0 5px; font-weight:600; }
+  input, textarea { width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px; font-size:1rem; outline:none; }
+  .products-container .product-row { display:flex; gap:10px; margin-bottom:10px; }
+  .products-container input { flex:1; }
+  button { background-color:#FF835E; color:white; border:none; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:600; transition:background 0.3s; }
+  button:hover { background-color:#e67350; }
+  #order-summary { margin-top:20px; background-color:#FFEFE6; padding:15px; border-radius:10px; font-size:0.95rem; line-height:1.5; }
+  #success-msg { color: green; font-weight: 600; text-align:center; margin-top:15px; display:none; }
+  @media(max-width:480px){ .products-container .product-row{flex-direction:column;} }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="https://i.postimg.cc/fT4NbGpp/image.png" alt="لوجو كلاف">
+</header>
+
+<h1>نموذج طلبات الجملة</h1>
+
+<form id="bulkForm" action="https://formspree.io/f/yourFormID" method="POST">
+  <label>اسم العميل</label>
+  <input type="text" name="name" required placeholder="أدخل اسمك">
+
+  <label>اسم الشركة (اختياري)</label>
+  <input type="text" name="company" placeholder="اسم الشركة">
+
+  <label>البريد الإلكتروني</label>
+  <input type="email" name="_replyto" required placeholder="example@email.com">
+
+  <label>رقم الجوال</label>
+  <input type="tel" name="phone" required placeholder="0501234567">
+
+  <label>المنتجات المطلوبة</label>
+  <div class="products-container" id="products-container">
+    <div class="product-row">
+      <input type="text" name="product[]" placeholder="اسم المنتج" required>
+      <input type="number" name="quantity[]" placeholder="الكمية" min="1" required>
+    </div>
+  </div>
+  <button type="button" onclick="addProduct()">إضافة منتج</button>
+
+  <label>ملاحظات إضافية</label>
+  <textarea name="notes" rows="3" placeholder="أي ملاحظات"></textarea>
+
   <button type="submit">إرسال الطلب</button>
 </form>
 
+<div id="success-msg">تم إرسال الطلب بنجاح! سنتواصل معك قريبًا.</div>
+
 <script>
-  document.getElementById('bulkForm').addEventListener('submit', function(e){
-    e.preventDefault(); // منع إعادة تحميل الصفحة
-    // جمع البيانات
-    const name = document.getElementById('name').value;
-    const company = document.getElementById('company').value;
-    const phone = document.getElementById('phone').value;
-    const email = document.getElementById('email').value;
-    const notes = document.getElementById('notes').value;
-    const products = Array.from(document.querySelectorAll('.products-container .product-row')).map(row => {
-      const product = row.querySelector('input[name="product[]"]').value;
-      const qty = row.querySelector('input[name="quantity[]"]').value;
-      return `${product} - ${qty} قطعة`;
-    }).join('\n');
+  // إضافة منتجات جديدة
+  function addProduct() {
+    const container = document.getElementById('products-container');
+    const div = document.createElement('div');
+    div.className = 'product-row';
+    div.innerHTML = `
+      <input type="text" name="product[]" placeholder="اسم المنتج" required>
+      <input type="number" name="quantity[]" placeholder="الكمية" min="1" required>
+    `;
+    container.appendChild(div);
+  }
 
-    // تجهيز محتوى البريد
-    let mailBody = `اسم العميل: ${name}\n`;
-    if(company) mailBody += `الشركة: ${company}\n`;
-    mailBody += `الجوال: ${phone}\nالبريد الإلكتروني: ${email}\n\n`;
-    mailBody += `المنتجات المطلوبة:\n${products}\n\n`;
-    if(notes) mailBody += `ملاحظات: ${notes}\n`;
-
-    // فتح البريد الافتراضي مع البيانات
-    window.location.href = `mailto:info@klafstore.com?subject=طلب جملة من ${name}&body=${encodeURIComponent(mailBody)}`;
+  // التعامل مع الإرسال
+  const form = document.getElementById('bulkForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if(response.ok){
+        document.getElementById('success-msg').style.display = 'block';
+        form.reset();
+        document.getElementById('products-container').innerHTML = `
+          <div class="product-row">
+            <input type="text" name="product[]" placeholder="اسم المنتج" required>
+            <input type="number" name="quantity[]" placeholder="الكمية" min="1" required>
+          </div>`;
+      } else {
+        alert('حدث خطأ، حاول مرة أخرى.');
+      }
+    }).catch(error => alert('حدث خطأ، تحقق من اتصالك بالإنترنت.'));
   });
 </script>
+
+</body>
+</html>
