@@ -1,1 +1,32 @@
+<form id="bulkForm">
+  <!-- الحقول كما في النموذج السابق -->
+  ...
+  <button type="submit">إرسال الطلب</button>
+</form>
 
+<script>
+  document.getElementById('bulkForm').addEventListener('submit', function(e){
+    e.preventDefault(); // منع إعادة تحميل الصفحة
+    // جمع البيانات
+    const name = document.getElementById('name').value;
+    const company = document.getElementById('company').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const notes = document.getElementById('notes').value;
+    const products = Array.from(document.querySelectorAll('.products-container .product-row')).map(row => {
+      const product = row.querySelector('input[name="product[]"]').value;
+      const qty = row.querySelector('input[name="quantity[]"]').value;
+      return `${product} - ${qty} قطعة`;
+    }).join('\n');
+
+    // تجهيز محتوى البريد
+    let mailBody = `اسم العميل: ${name}\n`;
+    if(company) mailBody += `الشركة: ${company}\n`;
+    mailBody += `الجوال: ${phone}\nالبريد الإلكتروني: ${email}\n\n`;
+    mailBody += `المنتجات المطلوبة:\n${products}\n\n`;
+    if(notes) mailBody += `ملاحظات: ${notes}\n`;
+
+    // فتح البريد الافتراضي مع البيانات
+    window.location.href = `mailto:info@klafstore.com?subject=طلب جملة من ${name}&body=${encodeURIComponent(mailBody)}`;
+  });
+</script>
