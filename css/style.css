@@ -1,3 +1,14 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 .simple-footer {
   background: #FF835E;
   text-align: center;
@@ -9,19 +20,8 @@
   font-weight: 400;
   color: #000;
 }
+
 .simple-footer .brand {
   color: #fff;
   font-weight: 600;
-}
-
-
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1; /* المحتوى ياخذ المساحة كلها قبل الفوتر */
 }
