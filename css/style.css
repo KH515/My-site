@@ -1,1 +1,15 @@
-
+.simple-footer {
+  background: #FF835E;
+  text-align: center;
+  padding: 15px;
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #000;
+}
+.simple-footer .brand {
+  color: #fff;
+  font-weight: 600;
+}
