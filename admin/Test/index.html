@@ -1,147 +1,153 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نموذج طلبات الجملة - كلاف</title>
-<style>
-  body { font-family: 'Cairo', sans-serif; background-color: #EEEEEE; margin:0; padding:20px; }
-  header { display:flex; justify-content:center; align-items:center; background:white; padding:15px 20px; box-shadow:0 0 5px rgba(0,0,0,0.1); margin-bottom:20px; border-radius:10px; }
-  header img { height:50px; margin-left:15px; }
-  h1 { text-align:center; color:#FF835E; margin-bottom:20px; }
-  form { background:white; padding:20px; border-radius:15px; max-width:700px; margin:auto; box-shadow:0 0 8px rgba(0,0,0,0.1); }
-  label { display:block; margin:10px 0 5px; font-weight:600; }
-  input, textarea { width:100%; padding:10px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px; font-size:1rem; outline:none; }
-  .products-container .product-row { display:flex; gap:10px; margin-bottom:10px; }
-  .products-container input { flex:1; }
-  button { background-color:#FF835E; color:white; border:none; padding:10px 20px; border-radius:10px; cursor:pointer; font-weight:600; transition:background 0.3s; }
-  button:hover { background-color:#e67350; }
-  #order-summary { margin-top:20px; background-color:#FFEFE6; padding:15px; border-radius:10px; font-size:0.95rem; line-height:1.5; }
-  #success-msg { color: green; font-weight: 600; text-align:center; margin-top:15px; display:none; }
-  @media(max-width:480px){ .products-container .product-row{flex-direction:column;} }
-</style>
+  <meta charset="UTF-8">
+  <title>كلاف</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* ========== هيدر كبير وثابت ========= */
+    .simple-header {
+      background: #EEEEEE;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 25px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1000;
+      height: 90px;
+    }
+
+    .simple-header .logo img {
+      height: 60px;
+      width: auto;
+      cursor: pointer;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      max-width: 40px;
+    }
+
+    .search-container.active {
+      max-width: 260px;
+    }
+
+    .search-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+    }
+
+    .search-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .search-input {
+      width: 0;
+      padding: 8px 0;
+      border: none;
+      border-radius: 20px;
+      background-color: #FF835E;
+      color: #fff;
+      font-size: 14px;
+      opacity: 0;
+      outline: none;
+      transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .search-container.active .search-input {
+      width: 200px;
+      padding: 8px 12px;
+      opacity: 1;
+    }
+
+    .search-input::placeholder {
+      color: #fff;
+      opacity: 0.8;
+    }
+
+    /* ========== فوتر ========= */
+    .simple-footer {
+      background: #FF835E;
+      text-align: center;
+      padding: 15px;
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      font-size: 13px;
+      font-weight: 400;
+      color: #000;
+    }
+
+    .simple-footer .brand {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* ========== مسافة تحت الهيدر ========== */
+    body {
+      padding-top: 110px; /* بحيث المحتوى لا يختفي خلف الهيدر */
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <img src="https://i.postimg.cc/fT4NbGpp/image.png" alt="لوجو كلاف">
-</header>
-
-<h1>نموذج طلبات الجملة</h1>
-
-<form id="bulkForm" action="https://formspree.io/f/yourFormID" method="POST">
-  <label>اسم العميل</label>
-  <input type="text" name="name" required placeholder="أدخل اسمك">
-
-  <label>اسم الشركة (اختياري)</label>
-  <input type="text" name="company" placeholder="اسم الشركة">
-
-  <label>البريد الإلكتروني</label>
-  <input type="email" name="_replyto" required placeholder="example@email.com">
-
-  <label>رقم الجوال</label>
-  <input type="tel" name="phone" required placeholder="0501234567">
-
-  <label>المنتجات المطلوبة</label>
-  <div class="products-container" id="products-container">
-    <div class="product-row">
-      <input type="text" name="product[]" placeholder="اسم المنتج" required>
-      <input type="number" name="quantity[]" placeholder="الكمية" min="1" required>
+  <!-- ======= الهيدر ======= -->
+  <header class="simple-header">
+    <div class="logo">
+      <img src="https://i.postimg.cc/TPBqv3WB/zip-5.png" alt="لوجو كلاف">
     </div>
-  </div>
-  <button type="button" onclick="addProduct()">إضافة منتج</button>
+    <div class="search-container" id="searchContainer">
+      <button class="search-btn" onclick="toggleSearch()">
+        <img src="https://cdn-icons-png.flaticon.com/512/751/751463.png" alt="بحث">
+      </button>
+      <input type="text" class="search-input" placeholder="وش ودك تبحث؟">
+    </div>
+  </header>
 
-  <label>ملاحظات إضافية</label>
-  <textarea name="notes" rows="3" placeholder="أي ملاحظات"></textarea>
+  <!-- ======= محتوى الصفحة ======= -->
+  <main>
+    <!-- هنا تحط المحتوى -->
+  </main>
 
-  <button type="submit">إرسال الطلب</button>
-</form>
+  <!-- ======= الفوتر ======= -->
+  <footer class="simple-footer">
+    الحقوق محفوظة | <span class="brand">2025 كلاف</span>
+  </footer>
 
-<div id="success-msg">تم إرسال الطلب بنجاح! سنتواصل معك قريبًا.</div>
-
-<script>
-  // إضافة منتجات جديدة
-  function addProduct() {
-    const container = document.getElementById('products-container');
-    const div = document.createElement('div');
-    div.className = 'product-row';
-    div.innerHTML = `
-      <input type="text" name="product[]" placeholder="اسم المنتج" required>
-      <input type="number" name="quantity[]" placeholder="الكمية" min="1" required>
-    `;
-    container.appendChild(div);
-  }
-
-  // التعامل مع الإرسال
-  const form = document.getElementById('bulkForm');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const data = new FormData(form);
-    fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if(response.ok){
-        document.getElementById('success-msg').style.display = 'block';
-        form.reset();
-        document.getElementById('products-container').innerHTML = `
-          <div class="product-row">
-            <input type="text" name="product[]" placeholder="اسم المنتج" required>
-            <input type="number" name="quantity[]" placeholder="الكمية" min="1" required>
-          </div>`;
-      } else {
-        alert('حدث خطأ، حاول مرة أخرى.');
-      }
-    }).catch(error => alert('حدث خطأ، تحقق من اتصالك بالإنترنت.'));
-  });
-</script>
-
+  <script>
+    function toggleSearch() {
+      const container = document.getElementById('searchContainer');
+      container.classList.toggle('active');
+      const input = container.querySelector('.search-input');
+      if (container.classList.contains('active')) input.focus();
+    }
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-الفوتر 
-
-<footer class="simple-footer">
-  <p>الحقوق محفوظة | 2025 <span class="brand">كلاف</span></p>
-</footer>
-
-
-
-/* يخلي الصفحة دايمًا تاخذ ارتفاع الشاشة */
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-/* يتمدد وياخذ كل المساحة الفاضية */
-main {
-  flex: 1;
-}
-
-.simple-footer {
-  background: #FF835E;
-  text-align: center;
-  padding: 15px;
-  font-family: 'Cairo', 'Tajawal', sans-serif;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  font-size: 13px;
-  font-weight: 400;
-  color: #000;
-}
-
-.simple-footer .brand {
-  color: #fff;
-  font-weight: 600;
-}
