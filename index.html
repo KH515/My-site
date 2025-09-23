@@ -1,3 +1,28 @@
-<footer class="simple-footer">
-  <p>الحقوق محفوظة | 2025 <span class="brand">كلاف</span></p>
-</footer>
+<body>
+
+  <!-- استدعاء الهيدر -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- محتوى الصفحة -->
+  </main>
+
+  <!-- استدعاء الفوتر -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // استدعاء الهيدر
+    fetch('/components/header.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+      });
+
+    // استدعاء الفوتر
+    fetch('/components/footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
+</body>
