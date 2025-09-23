@@ -99,3 +99,49 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+الفوتر 
+
+<footer class="simple-footer">
+  <p>الحقوق محفوظة | 2025 <span class="brand">كلاف</span></p>
+</footer>
+
+
+
+/* يخلي الصفحة دايمًا تاخذ ارتفاع الشاشة */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* يتمدد وياخذ كل المساحة الفاضية */
+main {
+  flex: 1;
+}
+
+.simple-footer {
+  background: #FF835E;
+  text-align: center;
+  padding: 15px;
+  font-family: 'Cairo', 'Tajawal', sans-serif;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #000;
+}
+
+.simple-footer .brand {
+  color: #fff;
+  font-weight: 600;
+}
