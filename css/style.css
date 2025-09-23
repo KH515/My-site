@@ -1,27 +1,37 @@
-html, body {
-  height: 100%;
-  margin: 0;
+.simple-header {
+  background: #EEEEEE;  /* خلفية فاتحة */
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-main {
-  flex: 1;
+/* اللوجو */
+.simple-header .logo img {
+  height: 40px;
+  cursor: pointer;
 }
 
-.simple-footer {
-  background: #FF835E;
-  text-align: center;
-  padding: 15px;
-  font-family: 'Cairo', 'Tajawal', sans-serif;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  font-size: 13px;
-  font-weight: 400;
-  color: #000;
-}
-
-.simple-footer .brand {
+/* صندوق البحث */
+.simple-header .search-box input {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px;
+  background-color: #FF835E; /* برتقالي */
   color: #fff;
-  font-weight: 600;
+  font-size: 14px;
+  outline: none;
+  width: 180px;
+  transition: width 0.3s;
+}
+
+.simple-header .search-box input::placeholder {
+  color: #fff;
+  opacity: 0.8;
+}
+
+/* عند التركيز يتوسع */
+.simple-header .search-box input:focus {
+  width: 250px;
 }
