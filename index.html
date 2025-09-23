@@ -16,24 +16,24 @@
       flex: 1;
     }
 
-    /* ======= هيدر كبير جدًا ======= */
+    /* ======= هيدر ضخم ======= */
     .simple-header {
       background: #EEEEEE;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 30px 40px; /* زيادة padding */
-      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      padding: 50px 60px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.25);
       position: fixed;
       top: 0;
       right: 0;
       left: 0;
       z-index: 1000;
-      height: 120px; /* ارتفاع أكبر */
+      height: 200px;
     }
 
     .simple-header .logo img {
-      height: 80px; /* تكبير اللوجو */
+      height: 120px;
       width: auto;
       cursor: pointer;
     }
@@ -41,14 +41,14 @@
     .search-container {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 20px;
       overflow: hidden;
       transition: all 0.3s ease;
-      max-width: 50px;
+      max-width: 70px;
     }
 
     .search-container.active {
-      max-width: 300px; /* البحث أكبر */
+      max-width: 400px;
     }
 
     .search-btn {
@@ -56,8 +56,8 @@
       border: none;
       padding: 0;
       cursor: pointer;
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
     }
 
     .search-btn img {
@@ -68,23 +68,24 @@
 
     .search-input {
       width: 0;
-      padding: 10px 0;
+      padding: 15px 0;
       border: none;
-      border-radius: 25px;
+      border-radius: 35px;
       background-color: #FF835E;
       color: #fff;
-      font-size: 16px; /* تكبير الخط */
+      font-size: 24px; /* الخط قبل الضغط */
       opacity: 0;
       outline: none;
-      transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+      transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
       white-space: nowrap;
       overflow: hidden;
     }
 
     .search-container.active .search-input {
-      width: 240px; 
-      padding: 10px 15px;
+      width: 360px; /* تكبير الحقل عند الضغط */
+      padding: 18px 22px;
       opacity: 1;
+      font-size: 28px; /* تكبير الخط عند الضغط */
     }
 
     .search-input::placeholder {
@@ -92,27 +93,27 @@
       opacity: 0.9;
     }
 
-    /* ======= الفوتر كبير وواضح ======= */
+    /* ======= الفوتر ضخم ======= */
     .simple-footer {
       background: #FF835E;
       text-align: center;
-      padding: 25px 15px; /* زيادة padding */
+      padding: 50px 25px;
       font-family: 'Cairo', 'Tajawal', sans-serif;
-      border-top-left-radius: 25px;
-      border-top-right-radius: 25px;
-      font-size: 16px; /* تكبير الخط */
-      font-weight: 500;
+      border-top-left-radius: 35px;
+      border-top-right-radius: 35px;
+      font-size: 20px;
+      font-weight: 600;
       color: #000;
     }
 
     .simple-footer .brand {
       color: #fff;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     /* ======= مسافة تحت الهيدر ======= */
     body {
-      padding-top: 140px; /* زيادة المسافة للّهيدر الكبير */
+      padding-top: 220px;
     }
   </style>
 </head>
