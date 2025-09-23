@@ -4,28 +4,36 @@
   <meta charset="UTF-8">
   <title>كلاف</title>
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
-      padding-top: 90px; /* زودت عشان اللوجو الأكبر */
+      display: flex;
+      flex-direction: column;
       font-family: Arial, sans-serif;
     }
 
+    main {
+      flex: 1;
+    }
+
+    /* ======= هيدر كبير جدًا ======= */
     .simple-header {
       background: #EEEEEE;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 20px; /* زودت شوية */
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 30px 40px; /* زيادة padding */
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
       position: fixed;
       top: 0;
       right: 0;
       left: 0;
       z-index: 1000;
+      height: 120px; /* ارتفاع أكبر */
     }
 
     .simple-header .logo img {
-      height: 60px; /* تكبير اللوجو */
+      height: 80px; /* تكبير اللوجو */
       width: auto;
       cursor: pointer;
     }
@@ -36,11 +44,11 @@
       gap: 10px;
       overflow: hidden;
       transition: all 0.3s ease;
-      max-width: 40px;
+      max-width: 50px;
     }
 
     .search-container.active {
-      max-width: 260px;
+      max-width: 300px; /* البحث أكبر */
     }
 
     .search-btn {
@@ -48,8 +56,8 @@
       border: none;
       padding: 0;
       cursor: pointer;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
     }
 
     .search-btn img {
@@ -60,12 +68,12 @@
 
     .search-input {
       width: 0;
-      padding: 8px 0;
+      padding: 10px 0;
       border: none;
-      border-radius: 20px;
+      border-radius: 25px;
       background-color: #FF835E;
       color: #fff;
-      font-size: 14px;
+      font-size: 16px; /* تكبير الخط */
       opacity: 0;
       outline: none;
       transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
@@ -74,19 +82,43 @@
     }
 
     .search-container.active .search-input {
-      width: 200px;
-      padding: 8px 12px;
+      width: 240px; 
+      padding: 10px 15px;
       opacity: 1;
     }
 
     .search-input::placeholder {
       color: #fff;
-      opacity: 0.8;
+      opacity: 0.9;
+    }
+
+    /* ======= الفوتر كبير وواضح ======= */
+    .simple-footer {
+      background: #FF835E;
+      text-align: center;
+      padding: 25px 15px; /* زيادة padding */
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      font-size: 16px; /* تكبير الخط */
+      font-weight: 500;
+      color: #000;
+    }
+
+    .simple-footer .brand {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* ======= مسافة تحت الهيدر ======= */
+    body {
+      padding-top: 140px; /* زيادة المسافة للّهيدر الكبير */
     }
   </style>
 </head>
 <body>
 
+  <!-- ======= الهيدر ======= -->
   <header class="simple-header">
     <div class="logo">
       <img src="https://i.postimg.cc/TPBqv3WB/zip-5.png" alt="لوجو كلاف">
@@ -99,17 +131,23 @@
     </div>
   </header>
 
+  <!-- ======= محتوى الصفحة ======= -->
+  <main>
+    <!-- هنا تحط المحتوى -->
+  </main>
+
+  <!-- ======= الفوتر ======= -->
+  <footer class="simple-footer">
+    الحقوق محفوظة | <span class="brand">2025 كلاف</span>
+  </footer>
+
   <script>
     function toggleSearch() {
       const container = document.getElementById('searchContainer');
       container.classList.toggle('active');
-
       const input = container.querySelector('.search-input');
-      if (container.classList.contains('active')) {
-        input.focus();
-      }
+      if (container.classList.contains('active')) input.focus();
     }
   </script>
-
 </body>
 </html>
