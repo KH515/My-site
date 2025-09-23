@@ -1,28 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>كلاف</title>
+  <style>
+    body {
+      margin: 0;
+      padding-top: 70px;
+      font-family: Arial, sans-serif;
+    }
+
+    .simple-header {
+      background: #EEEEEE;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .simple-header .logo img {
+      height: 40px;
+      width: auto;
+      cursor: pointer;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      max-width: 40px;
+    }
+
+    .search-container.active {
+      max-width: 260px;
+    }
+
+    .search-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+    }
+
+    .search-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .search-input {
+      width: 0;
+      padding: 8px 0;
+      border: none;
+      border-radius: 20px;
+      background-color: #FF835E;
+      color: #fff;
+      font-size: 14px;
+      opacity: 0;
+      outline: none;
+      transition: width 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .search-container.active .search-input {
+      width: 200px;
+      padding: 8px 12px;
+      opacity: 1;
+    }
+
+    .search-input::placeholder {
+      color: #fff;
+      opacity: 0.8;
+    }
+  </style>
+</head>
 <body>
 
-  <!-- استدعاء الهيدر -->
-  <div id="header-placeholder"></div>
+  <!-- ✅ الهيدر فقط بدون محتوى تحت -->
+  <header class="simple-header">
+    <div class="logo">
+      <img src="https://i.postimg.cc/TPBqv3WB/zip-5.png" alt="لوجو كلاف">
+    </div>
+    <div class="search-container" id="searchContainer">
+      <button class="search-btn" onclick="toggleSearch()">
+        <img src="https://cdn-icons-png.flaticon.com/512/751/751463.png" alt="بحث">
+      </button>
+      <input type="text" class="search-input" placeholder="وش ودك تبحث؟">
+    </div>
+  </header>
 
-  <main>
-    <!-- محتوى الصفحة -->
-  </main>
-
-  <!-- استدعاء الفوتر -->
-  <div id="footer-placeholder"></div>
+  <!-- ✅ لا يوجد محتوى تحت -->
 
   <script>
-    // استدعاء الهيدر
-    fetch('/components/header.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
-      });
+    function toggleSearch() {
+      const container = document.getElementById('searchContainer');
+      container.classList.toggle('active');
 
-    // استدعاء الفوتر
-    fetch('/components/footer.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      });
+      const input = container.querySelector('.search-input');
+      if (container.classList.contains('active')) {
+        input.focus();
+      }
+    }
   </script>
+
 </body>
+</html>
