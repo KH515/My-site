@@ -1,3 +1,10 @@
+/* الأساس */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* الهيدر */
 .simple-header {
   background: #EEEEEE;
   display: flex;
@@ -9,19 +16,22 @@
 
 /* اللوجو */
 .simple-header .logo img {
-  height: 40px;  /* حجم ثابت */
+  height: 40px;
   width: auto;
   cursor: pointer;
 }
 
 /* حاوية البحث */
 .search-container {
-  position: relative;
   display: flex;
   align-items: center;
+  gap: 10px;
+  position: relative;
+  max-width: 250px;
+  overflow: hidden;
 }
 
-/* زر البحث صغير دائري برتقالي */
+/* زر البحث */
 .search-btn {
   background-color: #FF835E;
   border: none;
@@ -30,20 +40,17 @@
   height: 40px;
   cursor: pointer;
   transition: transform 0.2s;
+  flex-shrink: 0;
 }
 
-/* عند الضغط على الزر */
 .search-btn:active {
   transform: scale(0.9);
 }
 
-/* شريط البحث مخفي في البداية */
+/* شريط البحث */
 .search-input {
-  position: absolute;
-  right: 0;
-  top: 0;
   width: 0;
-  padding: 8px 12px;
+  padding: 8px 0;
   border: none;
   border-radius: 20px;
   background-color: #FF835E;
@@ -51,12 +58,15 @@
   font-size: 14px;
   opacity: 0;
   outline: none;
-  transition: width 0.3s, opacity 0.3s;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-/* عند تفعيل البحث */
+/* عند التفعيل */
 .search-input.active {
   width: 200px;
+  padding: 8px 12px;
   opacity: 1;
 }
 
