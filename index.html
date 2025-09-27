@@ -1,32 +1,9 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صفحة More</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+<div id="header-placeholder"></div>
 
-  <!-- الهيدر -->
-  <div id="header-placeholder"></div>
-
-  <!-- محتوى الصفحة -->
-  <main>
-    <section class="icons-grid">
-      <div class="icon-box">الأسئلة الشائعة</div>
-      <div class="icon-box">طلبات الجملة</div>
-      <div class="icon-box">مدونة مقالات</div>
-      <div class="icon-box">بيانات الشركة</div>
-      <div class="icon-box">تفاصيل الاسترجاع</div>
-      <div class="icon-box">المزيد</div>
-    </section>
-  </main>
-
-  <!-- الفوتر -->
-  <div id="footer-placeholder"></div>
-
-  <!-- استدعاء JS -->
-  <script src="js/main.js"></script>
-</body>
-</html>
+<script>
+fetch('includes/header/index.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+</script>
