@@ -1,28 +1,63 @@
-<!-- شريط الأيقونات تحت الهيدر -->
-<div class="icon-bar">
-  <div class="icon-item">
-    <img src="images/company.png" alt="بيانات الشركة">
-    <span>بيانات الشركة</span>
-  </div>
-  <div class="icon-item">
-    <img src="images/returns.png" alt="تفاصيل الاسترجاع">
-    <span>تفاصيل الاسترجاع</span>
-  </div>
-  <div class="icon-item">
-    <img src="images/faq.png" alt="الأسئلة الشائعة">
-    <span>الأسئلة الشائعة</span>
-  </div>
-  <div class="icon-item">
-    <img src="images/wholesale.png" alt="طلبات الجملة">
-    <span>طلبات الجملة</span>
-  </div>
-  <div class="icon-item">
-    <img src="images/blog.png" alt="مدونة مقالات">
-    <span>مدونة مقالات</span>
-  </div>
-</div>
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تجربة كلاف</title>
 
+  <!-- استدعاء خط Open Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- كود CSS -->
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      margin: 0;
+    }
+
+    .text-icon-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+      justify-items: center;
+    }
+
+    .text-icon {
+      background: #FF835E;
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 20px 15px;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+      width: 120px;
+    }
+
+    .text-icon:hover {
+      transform: translateY(-3px);
+      background: #e46e4c;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شبكة الأيقونات -->
+  <div class="text-icon-grid">
+    <div class="text-icon">بيانات الشركة</div>
+    <div class="text-icon">تفاصيل الاسترجاع</div>
+    <div class="text-icon">الأسئلة الشائعة</div>
+    <div class="text-icon">طلبات الجملة</div>
+    <div class="text-icon">مدونة مقالات</div>
+    <div class="text-icon">ميزة إضافية</div>
+  </div>
+
+</body>
+</html>
 
 
 <!DOCTYPE html>
