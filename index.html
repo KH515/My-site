@@ -1,44 +1,9 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>متجر كلاف</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+<div id="header-placeholder"></div>
 
-  <!-- الهيدر -->
-  <div id="header-placeholder"></div>
-
-  <!-- المحتوى الرئيسي -->
-  <main>
-    <!-- شبكة الأيقونات -->
-    <section class="icons-grid">
-      <a class="icon-box" href="https://example.com/faq">الأسئلة الشائعة</a>
-      <a class="icon-box" href="https://example.com/wholesale">طلبات الجملة</a>
-      <a class="icon-box" href="https://example.com/blog">مدونة مقالات</a>
-      <a class="icon-box" href="https://example.com/company">بيانات الشركة</a>
-      <a class="icon-box" href="https://example.com/returns">تفاصيل الاسترجاع</a>
-      <a class="icon-box" href="https://example.com/more">المزيد</a>
-    </section>
-
-    <!-- محتوى نصي -->
-    <section class="content">
-      <h2>مرحباً بك في كلاف</h2>
-      <p>هذا القسم لتوضيح محتوى الصفحة. الأيقونات أعلاه مرتبطة بروابط وهمية يمكن تعديلها لاحقًا.</p>
-    </section>
-  </main>
-
-  <!-- الفوتر -->
-  <div id="footer-placeholder"></div>
-
-  <!-- استدعاء JS الهيدر والفوتر -->
-  <script src="js/loadHeaderFooter.js"></script>
-
-</body>
-</html>
-
-
-
-<link rel="stylesheet" href="/css/style.css">
+<script>
+fetch('/includes/header/index.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+</script>
