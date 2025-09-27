@@ -1,128 +1,16 @@
-/* الخط العام */
-body {
-  font-family: 'Open Sans', sans-serif;
-  margin: 0;
-  background: #0d0d0d;
-  color: #fff;
-}
-
-/* الهيدر */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  background: #1a1a1a;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  flex-wrap: wrap;
-}
-
-.header .logo img {
-  height: 50px;
-}
-
-.header .search {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px; /* يظهر في الجوال أسفل اللوجو */
-}
-
-.header .search input {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: none;
-  outline: none;
-}
-
-.header .search button {
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: none;
-  background: #FF835E;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.header .search button:hover {
-  background: #e46e4c;
-}
-
-/* شبكة الأيقونات */
-.icons-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 900px;
-  margin: 20px auto;
-  justify-items: center;
-}
-
-.icon-box {
-  background: #FF835E;
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 20px 15px;
-  border-radius: 12px;
-  text-align: center;
-  cursor: pointer;
-  width: 120px;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.icon-box:hover {
-  transform: translateY(-3px);
-  background: #e46e4c;
-}
-
-/* ميديا كويري للجوال */
-@media (max-width: 768px) {
-  .icons-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .icons-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 أيقونات فوق 3 تحت */
-  }
-  
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .header .search {
-    margin-top: 10px;
-    width: 100%;
-  }
-  
-  .header .search input {
-    flex: 1;
-    width: 100%;
-  }
-}
-
-
-
-
-
-
-
-
-/* استدعاء خط Tajawal */
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
 
-/* الخط العام */
+* { box-sizing:border-box; margin:0; padding:0; }
+html, body { height:100%; }
+
 body {
   font-family: 'Tajawal', sans-serif;
-  margin: 0;
-  background: #0d0d0d;
+  background: url('/images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
   color: #fff;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 /* الهيدر */
@@ -130,128 +18,84 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  background: #1a1a1a;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   flex-wrap: wrap;
+  padding: 14px 18px;
+  background: rgba(26,26,26,0.95);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
-
-.header .logo img {
-  height: 50px;
+.logo img { height:46px; display:block; }
+.search { display:flex; gap:8px; align-items:center; }
+.search input {
+  padding:8px 10px;
+  border-radius:8px;
+  border:none;
+  outline:none;
+  min-width:160px;
+  transition: all 0.3s ease;
 }
-
-.header .search {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.header .search input {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: none;
-  outline: none;
-}
-
-.header .search button {
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: none;
-  background: #FF835E;
+.search input:focus {
+  box-shadow: 0 0 6px #FF835E;
+  background-color: #1a1a1a;
   color: #fff;
-  font-weight: 600;
-  cursor: pointer;
 }
-
-.header .search button:hover {
-  background: #e46e4c;
+.search button {
+  padding:8px 12px;
+  border-radius:8px;
+  border:none;
+  background:#FF835E;
+  color:#fff;
+  cursor:pointer;
+  font-weight:700;
+  transition:background 0.3s ease, transform 0.2s ease;
 }
+.search button:hover { background:#e46e4c; transform:translateY(-2px); }
 
 /* شبكة الأيقونات */
-.icons-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 900px;
-  margin: 20px auto;
-  justify-items: center;
-  flex: 1; /* لتوسيع المساحة */
+.icons-grid{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0, auto));
+  gap:6px;
+  justify-content:center;
+  margin:18px auto;
 }
-
-.icon-box {
-  background: #FF835E;
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 20px 15px;
-  border-radius: 12px;
-  text-align: center;
-  cursor: pointer;
-  width: 120px;
-  transition: transform 0.2s ease, background 0.2s ease;
+.icon-box{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#FF835E;
+  color:#fff;
+  font-weight:700;
+  font-size:13px;
+  text-align:center;
+  border-radius:10px;
+  width:92px;
+  height:44px;
+  text-decoration:none;
+  transition:transform .18s ease, background .18s ease;
 }
+.icon-box:hover{ transform:translateY(-3px); background:#e46e4c; }
 
-.icon-box:hover {
-  transform: translateY(-3px);
-  background: #e46e4c;
+/* المحتوى */
+.content{ max-width:980px; margin:18px auto; line-height:1.6; padding:0 10px; }
+.content h2{ color:#EEEEEE; margin-bottom:8px; }
+
+/* الفوتر */
+.footer{
+  background:#f5f5f5;
+  color:#000;
+  text-align:center;
+  padding:14px 8px;
+  font-size:14px;
+  margin-top:auto;
 }
+.footer .brand{ color:#fff; font-weight:700; cursor:pointer; transition:color .25s; }
+.footer .brand:hover{ color:#000; }
 
-/* الفوتر ثابت أسفل الصفحة */
-.footer {
-  background: #f5f5f5; /* خلفية الفوتر */
-  color: #000;
-  text-align: center;
-  padding: 15px 0;
-  font-size: 14px;
-  font-family: 'Tajawal', sans-serif;
-
-  position: fixed;   /* يجعل الفوتر ثابت */
-  left: 0;
-  bottom: 0;
-  width: 100%;       /* يغطي عرض الصفحة كامل */
-  z-index: 1000;     /* فوق كل العناصر الأخرى */
-}
-
-.footer .brand {
-  color: #fff;       /* كلمة كلاف أبيض */
-  font-weight: 700;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.footer .brand:hover {
-  color: #000;       /* يتحول إلى أسود عند المرور */
-}
-
-/* لإعطاء مساحة أسفل المحتوى حتى لا يغطيه الفوتر */
-main {
-  padding-bottom: 80px; /* تقريبًا ارتفاع الفوتر */
-}
-
-/* ميديا كويري للجوال */
-@media (max-width: 768px) {
-  .icons-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .icons-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .header .search {
-    margin-top: 10px;
-    width: 100%;
-  }
-
-  .header .search input {
-    flex: 1;
-    width: 100%;
-  }
+/* Responsive */
+@media (max-width:480px){
+  .icons-grid{ grid-template-columns: repeat(3,1fr); gap:6px; padding:0; max-width:100%; }
+  .icon-box{ width:100%; max-width:86px; height:40px; font-size:12px; padding:8px 6px; }
+  .header{ align-items:flex-start; }
+  .search{ width:100%; margin-top:10px; }
+  .search input{ width:100%; }
 }
