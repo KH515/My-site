@@ -114,23 +114,127 @@ body {
 /* استدعاء خط Tajawal */
 @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
 
+body {
+  font-family: 'Tajawal', sans-serif;
+  margin: 0;
+  background: #0d0d0d;
+  color: #fff;
+}
+
+/* الهيدر */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #1a1a1a;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  flex-wrap: wrap;
+}
+
+.header .logo img {
+  height: 50px;
+}
+
+.header .search {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.header .search input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+.header .search button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #FF835E;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.header .search button:hover {
+  background: #e46e4c;
+}
+
+/* شبكة الأيقونات */
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 20px auto;
+  justify-items: center;
+}
+
+.icon-box {
+  background: #FF835E;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 20px 15px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  width: 120px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.icon-box:hover {
+  transform: translateY(-3px);
+  background: #e46e4c;
+}
+
 /* الفوتر */
 .footer {
-  background: #f5f5f5; /* خلفية الفوتر */
-  color: #000;         /* نص أسود */
+  background: #f5f5f5;
+  color: #000;
   text-align: center;
   padding: 15px 0;
-  font-family: 'Tajawal', sans-serif;
   font-size: 14px;
 }
 
 .footer .brand {
-  color: #fff;          /* كلمة كلاف أبيض */
+  color: #fff;
   font-weight: 700;
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .footer .brand:hover {
-  color: #000;          /* تتحول إلى أسود عند المرور */
+  color: #000;
+}
+
+/* ميديا كويري للجوال */
+@media (max-width: 768px) {
+  .icons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .icons-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header .search {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .header .search input {
+    flex: 1;
+    width: 100%;
+  }
 }
