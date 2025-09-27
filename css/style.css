@@ -103,3 +103,34 @@ body {
     width: 100%;
   }
 }
+
+
+
+
+
+
+
+
+/* استدعاء خط Tajawal */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+/* الفوتر */
+.footer {
+  background: #f5f5f5; /* خلفية الفوتر */
+  color: #000;         /* نص أسود */
+  text-align: center;
+  padding: 15px 0;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 14px;
+}
+
+.footer .brand {
+  color: #fff;          /* كلمة كلاف أبيض */
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer .brand:hover {
+  color: #000;          /* تتحول إلى أسود عند المرور */
+}
