@@ -3,61 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تجربة كلاف</title>
-
-  <!-- استدعاء خط Open Sans -->
+  <title>صفحة More</title>
+  <!-- استدعاء ملف التنسيقات -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- خط Open Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- كود CSS -->
-  <style>
-    body {
-      font-family: 'Open Sans', sans-serif;
-      background: #0d0d0d;
-      color: #fff;
-      margin: 0;
-    }
-
-    .text-icon-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 20px;
-      justify-items: center;
-    }
-
-    .text-icon {
-      background: #FF835E;
-      color: #fff;
-      font-weight: 600;
-      font-size: 14px;
-      padding: 20px 15px;
-      border-radius: 12px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease;
-      width: 120px;
-    }
-
-    .text-icon:hover {
-      transform: translateY(-3px);
-      background: #e46e4c;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- شبكة الأيقونات -->
-  <div class="text-icon-grid">
-    <div class="text-icon">بيانات الشركة</div>
-    <div class="text-icon">تفاصيل الاسترجاع</div>
-    <div class="text-icon">الأسئلة الشائعة</div>
-    <div class="text-icon">طلبات الجملة</div>
-    <div class="text-icon">مدونة مقالات</div>
-    <div class="text-icon">ميزة إضافية</div>
-  </div>
+  <!-- الهيدر -->
+  <header class="header">
+    <div class="logo">
+      <img src="images/logo.png" alt="شعار كلاف">
+    </div>
+    <div class="search">
+      <input type="text" placeholder="ابحث هنا...">
+      <button>🔍</button>
+    </div>
+  </header>
+
+  <!-- الأيقونات -->
+  <section class="icons-grid">
+    <div class="icon-box">الأسئلة الشائعة</div>
+    <div class="icon-box">طلبات الجملة</div>
+    <div class="icon-box">مدونة مقالات</div>
+    <div class="icon-box">بيانات الشركة</div>
+    <div class="icon-box">تفاصيل الاسترجاع</div>
+    <div class="icon-box">المزيد</div>
+  </section>
 
 </body>
 </html>
+
+
 
 
 <!DOCTYPE html>
