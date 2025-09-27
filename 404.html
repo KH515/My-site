@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>كلاف</title>
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
 
+  <div class="page-wrapper">
+    <main>
+      <!-- المحتوى هنا -->
+      <h1> الصفحة غير موجودة</h1>
+      <p>.</p>
+    </main>
+
+    <!-- مكان الفوتر -->
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <script>
+    fetch('/components/footer.html')
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+      });
+  </script>
+
+</body>
+</html>
