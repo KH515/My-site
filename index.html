@@ -1,18 +1,39 @@
-<header style="background:#FF835E;color:#fff;padding:15px 30px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:0 4px 8px rgba(0,0,0,0.1);">
+<header style="background:#FF835E;color:#fff;padding:20px 30px;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;box-shadow:0 6px 12px rgba(0,0,0,0.15);">
 
-  <!-- شريط البحث -->
-  <div style="flex:2;text-align:left;">
-    <form action="/search" method="GET" style="display:flex;max-width:400px;">
-      <input type="text" name="q" placeholder="ابحث هنا..." style="flex:1;padding:8px 12px;border-radius:8px 0 0 8px;border:none;font-size:15px;">
-      <button type="submit" style="padding:8px 15px;border:none;border-radius:0 8px 8px 0;background:#fff;color:#FF835E;font-weight:600;cursor:pointer;">بحث</button>
+  <!-- شريط البحث على اليسار -->
+  <div style="flex:1;text-align:left;">
+    <form action="/search" method="GET" style="display:flex;max-width:100%;">
+      <input type="text" name="q" placeholder="ابحث هنا..." style="flex:1;padding:14px 18px;border-radius:15px 0 0 15px;border:none;font-size:18px;">
+      <button type="submit" style="padding:14px 22px;border:none;border-radius:0 15px 15px 0;background:#fff;color:#FF835E;font-weight:700;cursor:pointer;font-size:18px;">بحث</button>
     </form>
   </div>
 
-  <!-- اللوجو -->
-  <div style="flex:1;text-align:right;">
+  <!-- اللوجو على أقصى اليمين -->
+  <div style="flex:0;text-align:right;">
     <a href="https://klafstore.com">
-      <img src="/images/IMG_3386.jpeg" alt="كلاف" style="height:50px;">
+      <img src="/images/logo.png" alt="كلاف" style="height:70px;">
     </a>
   </div>
 
 </header>
+
+<style>
+  @media (max-width: 768px) {
+    header {
+      flex-direction: row !important;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    header div {
+      text-align: initial !important;
+      margin-bottom: 0 !important;
+    }
+    header img {
+      height:50px !important;
+    }
+    form input, form button {
+      font-size:16px !important;
+      padding:10px !important;
+    }
+  }
+</style>
