@@ -1,9 +1,18 @@
-<div id="header-placeholder"></div>
+<header style="background:#FF835E;color:#fff;padding:15px 30px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:0 4px 8px rgba(0,0,0,0.1);">
 
-<script>
-fetch('/includes/header/index.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('header-placeholder').innerHTML = data;
-  });
-</script>
+  <!-- شريط البحث -->
+  <div style="flex:2;text-align:left;">
+    <form action="/search" method="GET" style="display:flex;max-width:400px;">
+      <input type="text" name="q" placeholder="ابحث هنا..." style="flex:1;padding:8px 12px;border-radius:8px 0 0 8px;border:none;font-size:15px;">
+      <button type="submit" style="padding:8px 15px;border:none;border-radius:0 8px 8px 0;background:#fff;color:#FF835E;font-weight:600;cursor:pointer;">بحث</button>
+    </form>
+  </div>
+
+  <!-- اللوجو -->
+  <div style="flex:1;text-align:right;">
+    <a href="https://klafstore.com">
+      <img src="/images/logo.png" alt="كلاف" style="height:50px;">
+    </a>
+  </div>
+
+</header>
