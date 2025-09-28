@@ -1,32 +1,57 @@
 <body style="margin:0;">
 
-<header style="background:#FF835E;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;box-shadow:0 8px 20px rgba(0,0,0,0.25);height:120px;padding:0 40px;">
+<header id="main-header" style="background:#FF835E;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;box-shadow:0 8px 20px rgba(0,0,0,0.25);height:140px;padding:0 40px;transition: all 0.3s ease;">
 
   <!-- شريط البحث على اليسار -->
   <div style="flex:1;text-align:left;display:flex;align-items:center;height:100%;">
     <form action="/search" method="GET" style="display:flex;width:100%;">
-      <input type="text" name="q" placeholder="ابحث هنا..." style="flex:1;padding:14px 18px;border-radius:25px 0 0 25px;border:none;font-size:20px;height:60px;">
-      <button type="submit" style="padding:14px 22px;border:none;border-radius:0 25px 25px 0;background:#fff;color:#FF835E;font-weight:700;cursor:pointer;font-size:20px;height:60px;">بحث</button>
+      <input id="search-input" type="text" name="q" placeholder="ابحث هنا..." style="flex:1;padding:16px 20px;border-radius:25px 0 0 25px;border:none;font-size:22px;height:65px;transition: all 0.3s ease;">
+      <button id="search-btn" type="submit" style="padding:16px 24px;border:none;border-radius:0 25px 25px 0;background:#fff;color:#FF835E;font-weight:700;cursor:pointer;font-size:22px;height:65px;transition: all 0.3s ease;">بحث</button>
     </form>
   </div>
 
   <!-- اللوجو على أقصى اليمين -->
   <div style="flex:0;text-align:right;display:flex;align-items:center;height:100%;">
     <a href="https://klafstore.com">
-      <img src="/images/logo.png" alt="كلاف" style="height:80px;">
+      <img id="logo" src="/images/logo.png" alt="كلاف" style="height:90px;transition: all 0.3s ease;">
     </a>
   </div>
 
 </header>
 
+<script>
+  const header = document.getElementById('main-header');
+  const logo = document.getElementById('logo');
+  const searchInput = document.getElementById('search-input');
+  const searchBtn = document.getElementById('search-btn');
+
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 50){
+      header.style.height = '100px';
+      logo.style.height = '60px';
+      searchInput.style.height = '45px';
+      searchBtn.style.height = '45px';
+      searchInput.style.fontSize = '18px';
+      searchBtn.style.fontSize = '18px';
+    } else {
+      header.style.height = '140px';
+      logo.style.height = '90px';
+      searchInput.style.height = '65px';
+      searchBtn.style.height = '65px';
+      searchInput.style.fontSize = '22px';
+      searchBtn.style.fontSize = '22px';
+    }
+  });
+</script>
+
 <style>
   @media (max-width: 768px) {
     header {
-      height:100px;
+      height:110px;
       padding:0 20px;
     }
     header img {
-      height:60px !important;
+      height:65px !important;
     }
     form input, form button {
       font-size:18px !important;
