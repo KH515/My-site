@@ -1,19 +1,19 @@
 <body style="margin:0;">
 
-<header style="background:#FF835E;color:#fff;padding:10px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;box-shadow:0 4px 8px rgba(0,0,0,0.15);">
+<header style="background:#FF835E;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;box-shadow:0 4px 8px rgba(0,0,0,0.15);height:60px;padding:0 20px;">
 
   <!-- شريط البحث على اليسار -->
-  <div style="flex:1;text-align:left;">
-    <form action="/search" method="GET" style="display:flex;max-width:100%;">
-      <input type="text" name="q" placeholder="ابحث هنا..." style="flex:1;padding:10px 14px;border-radius:12px 0 0 12px;border:none;font-size:16px;">
-      <button type="submit" style="padding:10px 18px;border:none;border-radius:0 12px 12px 0;background:#fff;color:#FF835E;font-weight:700;cursor:pointer;font-size:16px;">بحث</button>
+  <div style="flex:1;text-align:left;display:flex;align-items:center;height:100%;">
+    <form action="/search" method="GET" style="display:flex;width:100%;">
+      <input type="text" name="q" placeholder="ابحث هنا..." style="flex:1;padding:8px 12px;border-radius:12px 0 0 12px;border:none;font-size:16px;height:40px;">
+      <button type="submit" style="padding:8px 16px;border:none;border-radius:0 12px 12px 0;background:#fff;color:#FF835E;font-weight:700;cursor:pointer;font-size:16px;height:40px;">بحث</button>
     </form>
   </div>
 
   <!-- اللوجو على أقصى اليمين -->
-  <div style="flex:0;text-align:right;">
+  <div style="flex:0;text-align:right;display:flex;align-items:center;height:100%;">
     <a href="https://klafstore.com">
-      <img src="/images/logo.png" alt="كلاف" style="height:50px;">
+      <img src="/images/logo.png" alt="كلاف" style="height:40px;">
     </a>
   </div>
 
@@ -24,18 +24,16 @@
     header {
       flex-direction: row !important;
       align-items: center;
-      padding: 8px 10px;
-    }
-    header div {
-      text-align: initial !important;
-      margin-bottom: 0 !important;
+      height:50px;
+      padding:0 10px;
     }
     header img {
-      height:40px !important;
+      height:30px !important;
     }
     form input, form button {
       font-size:14px !important;
-      padding:8px !important;
+      padding:6px !important;
+      height:32px !important;
     }
   }
 </style>
