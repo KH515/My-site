@@ -1,15 +1,14 @@
 <footer class="klaf-footer-fixed">
-  <div class="footer-content">
-    <p class="footer-text">
-      الحقوق محفوظة | <span id="kf-year"></span> <span class="klaf-name">كلاف</span>
-    </p>
-  </div>
+  <p>
+    الحقوق محفوظة | <span id="kf-year"></span> 
+    <span class="klaf-name">كلاف</span>
+  </p>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
 
     .klaf-footer-fixed {
-      position: fixed; /* يجعل الفوتر ثابت */
+      position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
@@ -19,7 +18,7 @@
       font-family: 'Tajawal', sans-serif;
       font-size: 18px;
       color: #333;
-      box-shadow: 0 -2px 5px rgba(0,0,0,0.05); /* ظل خفيف للفوتر */
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
       z-index: 9999;
     }
 
@@ -27,7 +26,7 @@
       color: #ff7a00;
       cursor: pointer;
       font-weight: 700;
-      transition: color 0.3s ease, transform 0.2s ease;
+      transition: color 0.3s, transform 0.2s;
     }
 
     .klaf-footer-fixed .klaf-name:hover {
@@ -35,28 +34,17 @@
       transform: scale(1.05);
     }
 
-    .footer-text {
-      margin: 0;
-    }
-
-    /* لمنع محتوى الصفحة من الاختفاء خلف الفوتر */
     body { 
-      padding-bottom: 60px; /* نفس ارتفاع الفوتر تقريبًا */
+      padding-bottom: 60px; /* لمنع محتوى الصفحة من الاختفاء خلف الفوتر */
     }
 
     @media (max-width: 600px) {
-      .klaf-footer-fixed {
-        font-size: 16px;
-        padding: 12px 0;
-      }
+      .klaf-footer-fixed { font-size: 16px; padding: 12px 0; }
     }
   </style>
 
   <script>
-    // تعيين السنة تلقائيًا
     document.getElementById('kf-year').textContent = new Date().getFullYear();
-
-    // تغيير لون كلاف عند الضغط
     document.querySelector('.klaf-name').addEventListener('click', function() {
       this.style.color = '#fff';
     });
