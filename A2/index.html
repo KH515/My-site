@@ -152,6 +152,50 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
+
+  <script>
+const allProducts = [
+  {title: "قلم أزرق", price: "10 ر.س", image: "https://via.placeholder.com/150", url: "#"},
+  {title: "دفتر ملاحظات", price: "15 ر.س", image: "https://via.placeholder.com/150", url: "#"},
+  {title: "قلم حبر أسود", price: "12 ر.س", image: "https://via.placeholder.com/150", url: "#"},
+  {title: "دفتر رسم", price: "20 ر.س", image: "https://via.placeholder.com/150", url: "#"},
+  {title: "أقلام ألوان", price: "25 ر.س", image: "https://via.placeholder.com/150", url: "#"}
+];
+
+function searchProducts(query) {
+  const resultsContainer = document.querySelector(".products-container");
+  resultsContainer.innerHTML = ""; // مسح النتائج السابقة
+
+  const filtered = allProducts.filter(p => p.title.includes(query));
+  filtered.sort(() => 0.5 - Math.random()); // ترتيب عشوائي
+
+  filtered.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.style.cssText = "background:#fff;border-radius:10px;padding:10px;text-align:center;width:180px;box-shadow:0 2px 5px rgba(0,0,0,0.1);margin-bottom:15px;";
+    card.innerHTML = `
+      <img src="${p.image}" alt="${p.title}" style="width:100%;border-radius:5px;">
+      <h3>${p.title}</h3>
+      <p style="color:#f5576c;font-weight:bold;margin:0 0 10px;">${p.price}</p>
+      <a href="${p.url}" target="_blank" style="text-decoration:none;color:#fff;background:#f5576c;padding:5px 10px;border-radius:5px;display:inline-block;font-size:14px;">عرض المنتج</a>
+    `;
+    resultsContainer.appendChild(card);
+  });
+}
+
+// ربط البحث مع شريط البحث
+document.addEventListener("DOMContentLoaded", function() {
+  const searchInput = document.querySelector("#searchBox input");
+  searchInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      const query = searchInput.value.trim();
+      if (query !== "") {
+        searchProducts(query);
+      }
+    }
+  });
+});
+</script>
 <script src="header.js"></script>
 </body>
 </html>
