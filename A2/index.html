@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>هيدر كلاف</title>
+<style>
+body {
+  margin: 0;
+  font-family: "Tajawal", sans-serif;
+  background-color: #ECEADD;
+}
 
+/* ===== الهيدر ثابت ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ECEADD;
+  padding: 10px 25px;
+  position: fixed; /* ثابت في أعلى الصفحة */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo img {
+  height: 55px;
+  width: auto;
+  cursor: pointer;
+}
+
+.search-area {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-icon img {
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.search-icon img:hover {
+  transform: scale(1.1);
+}
+
+/* الشريط داخل flex بجانب الزر */
+.search-box {
+  background-color: #f5576c;
+  border-radius: 25px;
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  transition: width 0.4s ease, opacity 0.4s ease;
+  margin-left: 10px; /* مسافة بين الزر والشريط */
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.search-box.active {
+  width: 250px;
+  opacity: 1;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 14px;
+  background-color: #f5576c;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.search-box input::placeholder {
+  color: #fff;
+}
+
+main {
+  margin-top: 80px; /* مساحة أسفل الهيدر */
+}
+
+@media (max-width: 768px) {
+  .search-box.active {
+    width: 180px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <!-- الشعار -->
+  <div class="logo">
+    <img src="https://raw.githubusercontent.com/KH515/KLAF/main/Image/A3.PNG.jpg" alt="شعار كلاف">
+  </div>
+
+  <!-- زر البحث -->
+  <div class="search-area">
+    <div class="search-icon" id="searchToggle">
+      <img src="https://raw.githubusercontent.com/KH515/KLAF/refs/heads/main/Image/A4.PNG.png" alt="بحث">
+    </div>
+    <!-- شريط البحث -->
+    <div class="search-box" id="searchBox">
+      <input type="text" placeholder="عن ماذا تبحث؟">
+    </div>
+  </div>
+</header>
+
+<main>
+  <div style="height: 1500px; padding: 20px;">
+    <p>تجربة تمرير الصفحة. الهيدر ثابت، البحث يظهر بجانب زر البحث والنص داخل الشريط كامل.</p>
+  </div>
+</main>
+
+<script>
+const toggle = document.getElementById("searchToggle");
+const box = document.getElementById("searchBox");
+
+toggle.addEventListener("click", (e) => {
+  e.stopPropagation(); // منع تأثير click على المستند
+  box.classList.toggle("active");
+  if (box.classList.contains("active")) {
+    box.querySelector("input").focus();
+  }
+});
+
+// إخفاء البحث عند الضغط خارج الشريط
+document.addEventListener("click", function(e) {
+  if (!box.contains(e.target) && !toggle.contains(e.target)) {
+    box.classList.remove("active");
+  }
+});
+</script>
+
+</body>
+</html>
