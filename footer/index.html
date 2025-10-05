@@ -1,114 +1,64 @@
-<footer class="klaf-footer" role="contentinfo" aria-label="Footer">
-  <div class="kf-container">
-    <div class="kf-top">
-      <div class="kf-brand">
-        <a href="https://more.klafstore.com" aria-label="Klaf Store Home">
-          <img src="/assets/logo-black.png" alt="Klaf logo" class="kf-logo">
-        </a>
-        <p class="kf-tagline">متجر كلاف — منتجات أصلية وخدمة مميزة</p>
-      </div>
-
-      <nav class="kf-links" aria-label="Footer navigation">
-        <div class="kf-col">
-          <h4>المتجر</h4>
-          <ul>
-            <li><a href="/shop">تسوق</a></li>
-            <li><a href="/collections">الأقسام</a></li>
-            <li><a href="/bulk">طلبات الجملة</a></li>
-          </ul>
-        </div>
-        <div class="kf-col">
-          <h4>المساعدة</h4>
-          <ul>
-            <li><a href="/contact">اتصل بنا</a></li>
-            <li><a href="/faq">الأسئلة المتكررة</a></li>
-            <li><a href="/shipping">الشحن والاسترجاع</a></li>
-          </ul>
-        </div>
-        <div class="kf-col">
-          <h4>عن كلاف</h4>
-          <ul>
-            <li><a href="/about">من نحن</a></li>
-            <li><a href="https://more.klafstore.com/ar/blog">المدونة</a></li>
-            <li><a href="/careers">الوظائف</a></li>
-          </ul>
-        </div>
-      </nav>
-
-      <div class="kf-news">
-        <h4>اشترك بالنشرة</h4>
-        <form id="kf-subscribe" class="kf-form" aria-label="Newsletter form">
-          <label for="kf-email" class="sr-only">البريد الإلكتروني</label>
-          <input id="kf-email" name="email" type="email" placeholder="بريدك الإلكتروني" required>
-          <button type="submit">اشتراك</button>
-        </form>
-
-        <div class="kf-social" aria-label="Social links">
-          <a href="https://x.com/KlafStore" target="_blank" rel="noopener">X</a>
-          <a href="https://instagram.com/KlafStore" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://facebook.com/KlafStore" target="_blank" rel="noopener">Facebook</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="kf-bottom">
-      <p>© <span id="kf-year"></span> كلاف — جميع الحقوق محفوظة.</p>
-      <div class="kf-legal">
-        <a href="/privacy">سياسة الخصوصية</a>
-        <a href="/terms">شروط الاستخدام</a>
-      </div>
-    </div>
+<footer class="klaf-footer-fixed">
+  <div class="footer-content">
+    <p class="footer-text">
+      الحقوق محفوظة | <span id="kf-year"></span> <span class="klaf-name">كلاف</span>
+    </p>
   </div>
 
   <style>
-    :root{
-      --kf-bg:#0f1724;
-      --kf-text:#f4f4f5;
-      --kf-accent:#ff7a00;
-      --kf-max:1100px;
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+    .klaf-footer-fixed {
+      position: fixed; /* يجعل الفوتر ثابت */
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #EEEEEE;
+      padding: 15px 0;
+      text-align: center;
+      font-family: 'Tajawal', sans-serif;
+      font-size: 18px;
+      color: #333;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.05); /* ظل خفيف للفوتر */
+      z-index: 9999;
     }
-    .klaf-footer{background:var(--kf-bg);color:var(--kf-text);padding:36px 16px;font-family:arial,system-ui;line-height:1.4}
-    .kf-container{max-width:var(--kf-max);margin:0 auto}
-    .kf-top{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
-    .kf-brand{flex:1 1 220px}
-    .kf-logo{width:64px;height:auto;border-radius:8px;background:#fff;padding:6px}
-    .kf-tagline{margin:8px 0;color:rgba(255,255,255,0.85)}
-    .kf-links{display:flex;gap:28px;flex:1 1 420px}
-    .kf-col h4{margin:0 0 8px 0;font-size:15px}
-    .kf-col ul{list-style:none;padding:0;margin:0}
-    .kf-col li{margin:6px 0}
-    .kf-col a{color:var(--kf-text);text-decoration:none;opacity:0.9}
-    .kf-col a:hover{text-decoration:underline;color:var(--kf-accent)}
-    .kf-news{flex:1 1 260px}
-    .kf-form{display:flex;gap:8px}
-    .kf-form input{flex:1;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:var(--kf-text)}
-    .kf-form button{background:var(--kf-accent);border:none;padding:8px 12px;border-radius:6px;color:#fff;cursor:pointer}
-    .kf-social{margin-top:12px;display:flex;gap:8px}
-    .kf-social a{display:inline-block;padding:6px 10px;background:rgba(255,255,255,0.04);border-radius:6px;color:var(--kf-text);text-decoration:none}
-    .kf-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:24px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.03);font-size:14px}
-    .kf-legal a{color:rgba(255,255,255,0.85);margin-left:12px;text-decoration:none}
-    .kf-legal a:hover{color:var(--kf-accent)}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
-    @media(max-width:820px){
-      .kf-top{flex-direction:column}
-      .kf-bottom{flex-direction:column;gap:10px;align-items:flex-start}
+
+    .klaf-footer-fixed .klaf-name {
+      color: #ff7a00;
+      cursor: pointer;
+      font-weight: 700;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .klaf-footer-fixed .klaf-name:hover {
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    .footer-text {
+      margin: 0;
+    }
+
+    /* لمنع محتوى الصفحة من الاختفاء خلف الفوتر */
+    body { 
+      padding-bottom: 60px; /* نفس ارتفاع الفوتر تقريبًا */
+    }
+
+    @media (max-width: 600px) {
+      .klaf-footer-fixed {
+        font-size: 16px;
+        padding: 12px 0;
+      }
     }
   </style>
 
   <script>
-    // السنة تلقائي
-    document.getElementById('kf-year')?.replaceWith(document.createElement('span')).textContent = new Date().getFullYear();
+    // تعيين السنة تلقائيًا
+    document.getElementById('kf-year').textContent = new Date().getFullYear();
 
-    // نموذج الاشتراك
-    const form = document.getElementById('kf-subscribe');
-    if(form){
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        const email = (document.getElementById('kf-email') || {}).value || '';
-        const subject = encodeURIComponent('اشتراك بالنشرة من موقع كلاف');
-        const body = encodeURIComponent('الرجاء إضافة هذا البريد للقائمة: ' + email);
-        window.location.href = `mailto:newsletter@klafstore.com?subject=${subject}&body=${body}`;
-      });
-    }
+    // تغيير لون كلاف عند الضغط
+    document.querySelector('.klaf-name').addEventListener('click', function() {
+      this.style.color = '#fff';
+    });
   </script>
 </footer>
