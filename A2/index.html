@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>هيدر كلاف</title>
+<title>More - KlafStore</title>
 <style>
 body {
   margin: 0;
@@ -49,7 +49,6 @@ header {
   transform: scale(1.1);
 }
 
-/* الشريط داخل flex بجانب الزر */
 .search-box {
   background-color: #f5576c;
   border-radius: 25px;
@@ -82,8 +81,53 @@ header {
   color: #fff;
 }
 
+/* ===== المنتجات ===== */
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 100px;
+  padding: 0 20px 50px 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 180px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin: 10px 0 5px;
+}
+
+.product-card p {
+  color: #f5576c;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+.product-card a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #f5576c;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+}
+
 main {
-  margin-top: 80px; /* مساحة أسفل الهيدر */
+  margin-top: 80px;
 }
 
 @media (max-width: 768px) {
@@ -114,46 +158,12 @@ main {
 </header>
 
 <main>
-  <div style="height: 1500px; padding: 20px;">
-    <p>تجربة تمرير الصفحة. الهيدر ثابت، البحث يظهر بجانب زر البحث والنص داخل الشريط كامل.</p>
-  </div>
+  <!-- حاوية المنتجات -->
+  <div class="products-container"></div>
 </main>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const toggle = document.getElementById("searchToggle");
-  const box = document.getElementById("searchBox");
-  const searchInput = box.querySelector("input");
-
-  // إظهار/إخفاء الشريط عند الضغط على زر البحث
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation(); // منع تأثير click على المستند
-    box.classList.toggle("active");
-    if (box.classList.contains("active")) {
-      searchInput.focus();
-    }
-  });
-
-  // إخفاء البحث عند الضغط خارج الشريط
-  document.addEventListener("click", function(e) {
-    if (!box.contains(e.target) && !toggle.contains(e.target)) {
-      box.classList.remove("active");
-    }
-  });
-
-  // البحث مترابط مع قاعدة بيانات سلة
-  searchInput.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-      const query = searchInput.value.trim();
-      if (query !== "") {
-        window.location.href = "https://klafstore.com/ar/search?q=" + encodeURIComponent(query);
-      }
-    }
-  });
-});
-</script>
-
-  <script>
+// ===== بيانات المنتجات =====
 const allProducts = [
   {title: "قلم أزرق", price: "10 ر.س", image: "https://via.placeholder.com/150", url: "#"},
   {title: "دفتر ملاحظات", price: "15 ر.س", image: "https://via.placeholder.com/150", url: "#"},
@@ -162,6 +172,7 @@ const allProducts = [
   {title: "أقلام ألوان", price: "25 ر.س", image: "https://via.placeholder.com/150", url: "#"}
 ];
 
+// ===== وظائف البحث =====
 function searchProducts(query) {
   const resultsContainer = document.querySelector(".products-container");
   resultsContainer.innerHTML = ""; // مسح النتائج السابقة
@@ -172,35 +183,42 @@ function searchProducts(query) {
   filtered.forEach(p => {
     const card = document.createElement("div");
     card.className = "product-card";
-    card.style.cssText = "background:#fff;border-radius:10px;padding:10px;text-align:center;width:180px;box-shadow:0 2px 5px rgba(0,0,0,0.1);margin-bottom:15px;";
     card.innerHTML = `
-      <img src="${p.image}" alt="${p.title}" style="width:100%;border-radius:5px;">
+      <img src="${p.image}" alt="${p.title}">
       <h3>${p.title}</h3>
-      <p style="color:#f5576c;font-weight:bold;margin:0 0 10px;">${p.price}</p>
-      <a href="${p.url}" target="_blank" style="text-decoration:none;color:#fff;background:#f5576c;padding:5px 10px;border-radius:5px;display:inline-block;font-size:14px;">عرض المنتج</a>
+      <p>${p.price}</p>
+      <a href="${p.url}" target="_blank">عرض المنتج</a>
     `;
     resultsContainer.appendChild(card);
   });
 }
 
-// ربط البحث مع شريط البحث
+// ===== شريط البحث =====
 document.addEventListener("DOMContentLoaded", function() {
-  const searchInput = document.querySelector("#searchBox input");
+  const toggle = document.getElementById("searchToggle");
+  const box = document.getElementById("searchBox");
+  const searchInput = box.querySelector("input");
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    box.classList.toggle("active");
+    if (box.classList.contains("active")) searchInput.focus();
+  });
+
+  document.addEventListener("click", function(e) {
+    if (!box.contains(e.target) && !toggle.contains(e.target)) {
+      box.classList.remove("active");
+    }
+  });
+
   searchInput.addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
       const query = searchInput.value.trim();
-      if (query !== "") {
-        searchProducts(query);
-      }
+      if (query !== "") searchProducts(query);
     }
   });
 });
 </script>
 
-  <main>
-  <div class="products-container" style="display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:100px;"></div>
-</main>
-  
-<script src="header.js"></script>
 </body>
 </html>
