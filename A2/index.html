@@ -18,7 +18,7 @@ header {
   justify-content: space-between;
   background-color: #ECEADD;
   padding: 10px 25px;
-  position: fixed; /* ثابت في أعلى الصفحة */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -57,7 +57,7 @@ header {
   width: 0;
   opacity: 0;
   transition: width 0.4s ease, opacity 0.4s ease;
-  margin-left: 10px; /* مسافة بين الزر والشريط */
+  margin-left: 10px;
   box-sizing: border-box;
   flex-shrink: 0;
 }
@@ -120,61 +120,28 @@ main {
 </main>
 
 <script>
-const toggle = document.getElementById("searchToggle");
-const box = document.getElementById("searchBox");
-
-toggle.addEventListener("click", (e) => {
-  e.stopPropagation(); // منع تأثير click على المستند
-  box.classList.toggle("active");
-  if (box.classList.contains("active")) {
-    box.querySelector("input").focus();
-  }
-});
-
-// إخفاء البحث عند الضغط خارج الشريط
-document.addEventListener("click", function(e) {
-  if (!box.contains(e.target) && !toggle.contains(e.target)) {
-    box.classList.remove("active");
-  }
-});
-</script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
+document.addEventListener("DOMContentLoaded", function() {
   const toggle = document.getElementById("searchToggle");
   const box = document.getElementById("searchBox");
+  const searchInput = box.querySelector("input");
 
+  // إظهار/إخفاء الشريط عند الضغط على زر البحث
   toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // منع تأثير click على المستند
     box.classList.toggle("active");
     if (box.classList.contains("active")) {
-      box.querySelector("input").focus();
+      searchInput.focus();
     }
   });
 
+  // إخفاء البحث عند الضغط خارج الشريط
   document.addEventListener("click", function(e) {
     if (!box.contains(e.target) && !toggle.contains(e.target)) {
       box.classList.remove("active");
     }
   });
 
-  const searchInput = box.querySelector("input");
+  // البحث مترابط مع قاعدة بيانات سلة
   searchInput.addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
       const query = searchInput.value.trim();
@@ -183,8 +150,8 @@ document.addEventListener("click", function(e) {
       }
     }
   });
+});
 </script>
 
-
-
-<script src="index.js"></script>
+</body>
+</html>
