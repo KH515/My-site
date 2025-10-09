@@ -222,3 +222,210 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>فوتر كلاف</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Tajawal', sans-serif;
+      direction: rtl;
+    }
+
+    footer {
+      background-color: #ff8159;
+      color: white;
+      padding: 50px 20px 20px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-logo {
+      text-align: center;
+    }
+
+    .footer-logo h2 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo p {
+      font-size: 15px;
+      margin: 5px 0;
+    }
+
+    .vat-img {
+      height: 40px;
+      margin-top: 10px;
+    }
+
+    .footer-section h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .footer-section ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-contact p {
+      font-size: 15px;
+      margin: 5px 0;
+    }
+
+    .social-icons {
+      margin-top: 15px;
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      width: 40px;
+      height: 40px;
+      border: 1px solid white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .social-icons a img {
+      width: 20px;
+      height: 20px;
+      filter: brightness(0) invert(1); /* لجعل الأيقونات بيضاء */
+    }
+
+    .social-icons a:hover {
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      font-size: 14px;
+      border-top: 1px solid rgba(255,255,255,0.4);
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<footer>
+  <div class="footer-container">
+
+    <!-- الشعار -->
+    <div class="footer-logo">
+      <h2>كـلاف</h2>
+      <p>نطمح لتقديم تجربة تسوق مختلفة</p>
+      <p>الرقم الضريبي: <strong>312646157900003</strong></p>
+      <img class="vat-img" src="https://cdn.salla.sa/tgOfK/VATicon.png" alt="شعار ضريبة القيمة المضافة">
+    </div>
+
+    <!-- روابط مهمة -->
+    <div class="footer-section">
+      <h3>روابط مهمة</h3>
+      <ul>
+        <li><a href="#">الرئيسية</a></li>
+        <li><a href="#">منتجاتنا</a></li>
+        <li><a href="#">سياسة الاستبدال والاسترجاع</a></li>
+        <li><a href="#">الأسئلة الشائعة</a></li>
+      </ul>
+    </div>
+
+    <!-- تواصل معنا -->
+    <div class="footer-section footer-contact">
+      <h3>تواصل معنا</h3>
+      <p>+966511268269</p>
+      <p>info@klafstore.com</p>
+      <div class="social-icons">
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3669/3669950.png" alt="TikTok"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968891.png" alt="X"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+      </div>
+    </div>
+
+    <!-- السياسات -->
+    <div class="footer-section">
+      <h3>سياسات</h3>
+      <ul>
+        <li><a href="#">سياسة الخصوصية</a></li>
+        <li><a href="#">الشروط والأحكام</a></li>
+        <li><a href="#">سياسة الشحن</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- أسفل الفوتر -->
+  <div class="footer-bottom">
+    جميع الحقوق محفوظة © كلاف 2025
+  </div>
+</footer>
+
+</body>
+</html>
+
