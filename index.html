@@ -1,82 +1,224 @@
-<body style="margin:0;">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>More - KlafStore</title>
+<style>
+body {
+  margin: 0;
+  font-family: "Tajawal", sans-serif;
+  background-color: #ECEADD;
+}
 
-<header id="main-header" style="background:#FF835E;color:#fff;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;box-shadow:0 8px 20px rgba(0,0,0,0.25);height:140px;padding:0 40px;transition: all 0.3s ease;">
+/* ===== الهيدر ثابت ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ECEADD;
+  padding: 10px 25px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-  <!-- شريط البحث على اليسار -->
-  <div style="flex:1;text-align:left;display:flex;align-items:center;height:100%;">
-    <form action="/search" method="GET" style="display:flex;width:100%;">
-      <input id="search-input" type="text" name="q" placeholder="ابحث هنا..." style="flex:1;padding:16px 20px;border-radius:25px 0 0 25px;border:none;font-size:22px;height:65px;transition: all 0.3s ease;">
-      <button id="search-btn" type="submit" style="padding:16px 24px;border:none;border-radius:0 25px 25px 0;background:#fff;color:#FF835E;font-weight:700;cursor:pointer;font-size:22px;height:65px;transition: all 0.3s ease;">بحث</button>
-    </form>
+.logo img {
+  height: 55px;
+  width: auto;
+  cursor: pointer;
+}
+
+.search-area {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-icon img {
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.search-icon img:hover {
+  transform: scale(1.1);
+}
+
+.search-box {
+  background-color: #f5576c;
+  border-radius: 25px;
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  transition: width 0.4s ease, opacity 0.4s ease;
+  margin-left: 10px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.search-box.active {
+  width: 250px;
+  opacity: 1;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 14px;
+  background-color: #f5576c;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.search-box input::placeholder {
+  color: #fff;
+}
+
+/* ===== المنتجات ===== */
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 100px;
+  padding: 0 20px 50px 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 180px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin: 10px 0 5px;
+}
+
+.product-card p {
+  color: #f5576c;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+.product-card a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #f5576c;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+}
+
+main {
+  margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+  .search-box.active {
+    width: 180px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <!-- الشعار -->
+  <div class="logo">
+    <img src="https://raw.githubusercontent.com/KH515/KLAF/main/Image/logo.png.png" alt="شعار كلاف">
   </div>
 
-  <!-- اللوجو على أقصى اليمين -->
-  <div style="flex:0;text-align:right;display:flex;align-items:center;height:100%;">
-    <a href="https://klafstore.com">
-      <img id="logo" src="/images/logo.png" alt="كلاف" style="height:90px;transition: all 0.3s ease;">
-    </a>
+  <!-- زر البحث -->
+  <div class="search-area">
+    <div class="search-icon" id="searchToggle">
+      <img src="https://raw.githubusercontent.com/KH515/KLAF/refs/heads/main/Image/A4.PNG.png" alt="بحث">
+    </div>
+    <!-- شريط البحث -->
+    <div class="search-box" id="searchBox">
+      <input type="text" placeholder="عن ماذا تبحث؟">
+    </div>
   </div>
-
 </header>
 
-<script>
-  const header = document.getElementById('main-header');
-  const logo = document.getElementById('logo');
-  const searchInput = document.getElementById('search-input');
-  const searchBtn = document.getElementById('search-btn');
+<main>
+  <!-- حاوية المنتجات -->
+  <div class="products-container"></div>
+</main>
 
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 50){
-      header.style.height = '100px';
-      logo.style.height = '60px';
-      searchInput.style.height = '45px';
-      searchBtn.style.height = '45px';
-      searchInput.style.fontSize = '18px';
-      searchBtn.style.fontSize = '18px';
-    } else {
-      header.style.height = '140px';
-      logo.style.height = '90px';
-      searchInput.style.height = '65px';
-      searchBtn.style.height = '65px';
-      searchInput.style.fontSize = '22px';
-      searchBtn.style.fontSize = '22px';
+<script>
+// ===== بيانات المنتجات =====
+const allProducts = [
+  {title: "قلم أزرق", price: "10 ر.س", image: "https://via.placeholder.com/150", url: "#"},
+  {title: "دفتر ملاحظات", price: "15 ر.س", image: "https://via.placeholder.com/150", url: "#"},
+  {title: "قلم حبر أسود", price: "12 ر.س", image: "https://via.placeholder.com/150", url: "#"},
+  {title: "دفتر رسم", price: "20 ر.س", image: "https://via.placeholder.com/150", url: "#"},
+  {title: "أقلام ألوان", price: "25 ر.س", image: "https://via.placeholder.com/150", url: "#"}
+];
+
+// ===== وظائف البحث =====
+function searchProducts(query) {
+  const resultsContainer = document.querySelector(".products-container");
+  resultsContainer.innerHTML = ""; // مسح النتائج السابقة
+
+  const filtered = allProducts.filter(p => p.title.includes(query));
+  filtered.sort(() => 0.5 - Math.random()); // ترتيب عشوائي
+
+  filtered.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="${p.image}" alt="${p.title}">
+      <h3>${p.title}</h3>
+      <p>${p.price}</p>
+      <a href="${p.url}" target="_blank">عرض المنتج</a>
+    `;
+    resultsContainer.appendChild(card);
+  });
+}
+
+// ===== شريط البحث =====
+document.addEventListener("DOMContentLoaded", function() {
+  const toggle = document.getElementById("searchToggle");
+  const box = document.getElementById("searchBox");
+  const searchInput = box.querySelector("input");
+
+  toggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    box.classList.toggle("active");
+    if (box.classList.contains("active")) searchInput.focus();
+  });
+
+  document.addEventListener("click", function(e) {
+    if (!box.contains(e.target) && !toggle.contains(e.target)) {
+      box.classList.remove("active");
     }
   });
+
+  searchInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      const query = searchInput.value.trim();
+      if (query !== "") searchProducts(query);
+    }
+  });
+});
 </script>
 
-<style>
-  @media (max-width: 768px) {
-    header {
-      height:110px;
-      padding:0 20px;
-    }
-    header img {
-      height:65px !important;
-    }
-    form input, form button {
-      font-size:18px !important;
-      padding:10px !important;
-      height:50px !important;
-    }
-  }
-</style>
-
-
-
-
-
-
-
-  <body>
-  <!-- مكان الهيدر -->
-  <div id="site-header"></div>
-
-  <!-- باقي محتوى الصفحة -->
-  <main>
-    <h1>مرحبا بك في كلاف</h1>
-    <p>هذا المحتوى الرئيسي للصفحة.</p>
-  </main>
-
-  <!-- استدعاء الهيدر -->
-  <script src="/js/header.js"></script>
 </body>
+</html>
