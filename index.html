@@ -3,503 +3,240 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>More - KlafStore</title>
+<title>صفحة ديناميكية - KlafStore</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* ===== تصميم عام ===== */
 body {
   margin: 0;
-  font-family: "Tajawal", sans-serif;
+  font-family: 'Tajawal', sans-serif;
   background-color: #ECEADD;
+  color: #333;
 }
 
-/* ===== الهيدر ثابت ===== */
+/* ===== الهيدر ===== */
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ECEADD;
+  background-color: #f5576c;
   padding: 10px 25px;
   position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
   z-index: 1000;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .logo img {
   height: 55px;
-  width: auto;
   cursor: pointer;
 }
 
-.search-area {
-  display: flex;
-  align-items: center;
-  position: relative;
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: bold;
 }
 
-.search-icon img {
-  height: 35px;
-  width: 35px;
-  cursor: pointer;
-  transition: transform 0.2s;
+nav a:hover {
+  opacity: 0.8;
 }
 
-.search-icon img:hover {
-  transform: scale(1.1);
-}
-
-.search-box {
-  background-color: #f5576c;
-  border-radius: 25px;
-  overflow: hidden;
-  width: 0;
-  opacity: 0;
-  transition: width 0.4s ease, opacity 0.4s ease;
-  margin-left: 10px;
-  box-sizing: border-box;
-  flex-shrink: 0;
-}
-
-.search-box.active {
-  width: 250px;
-  opacity: 1;
-}
-
-.search-box input {
-  border: none;
-  outline: none;
-  padding: 10px 20px;
+/* ===== بنر متحرك (Slider) ===== */
+.slider {
+  margin-top: 80px;
   width: 100%;
-  font-size: 14px;
-  background-color: #f5576c;
-  color: #fff;
-  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
 }
 
-.search-box input::placeholder {
-  color: #fff;
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
-/* ===== المنتجات ===== */
-.products-container {
+.slide {
+  min-width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* ===== بنرات صغيرة ===== */
+.small-banners {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
+  margin: 30px 20px;
   justify-content: center;
-  margin-top: 100px;
-  padding: 0 20px 50px 20px;
 }
 
-.product-card {
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 10px;
-  text-align: center;
-  width: 180px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.product-card img {
-  width: 100%;
-  border-radius: 5px;
-}
-
-.product-card h3 {
-  font-size: 16px;
-  margin: 10px 0 5px;
-}
-
-.product-card p {
-  color: #f5576c;
-  font-weight: bold;
-  margin: 0 0 10px;
-}
-
-.product-card a {
-  text-decoration: none;
+.small-banner {
+  flex: 1;
+  min-width: 200px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  position: relative;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.small-banner:hover {
+  transform: scale(1.05);
+}
+
+/* ===== فوتر ===== */
+footer {
   background-color: #f5576c;
-  padding: 5px 10px;
-  border-radius: 5px;
-  display: inline-block;
+  color: #fff;
+  padding: 50px 20px 20px;
+  margin-top: 40px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
   font-size: 14px;
+  border-top: 1px solid rgba(255,255,255,0.4);
 }
 
-main {
-  margin-top: 80px;
-}
-
+/* ===== متجاوب ===== */
 @media (max-width: 768px) {
-  .search-box.active {
-    width: 180px;
+  .small-banners {
+    flex-direction: column;
+    align-items: center;
+  }
+  .small-banner {
+    width: 90%;
   }
 }
 </style>
 </head>
 <body>
 
+<!-- ===== الهيدر ===== -->
 <header>
-  <!-- الشعار -->
   <div class="logo">
     <img src="https://raw.githubusercontent.com/KH515/KLAF/main/Image/logo.png.png" alt="شعار كلاف">
   </div>
-
-  <!-- زر البحث -->
-  <div class="search-area">
-    <div class="search-icon" id="searchToggle">
-      <img src="https://raw.githubusercontent.com/KH515/KLAF/refs/heads/main/Image/A4.PNG.png" alt="بحث">
-    </div>
-    <!-- شريط البحث -->
-    <div class="search-box" id="searchBox">
-      <input type="text" placeholder="عن ماذا تبحث؟">
-    </div>
-  </div>
+  <nav>
+    <a href="#">الرئيسية</a>
+    <a href="#">منتجاتنا</a>
+    <a href="#">عروض</a>
+    <a href="#">تواصل معنا</a>
+  </nav>
 </header>
 
-<main>
-  <!-- حاوية المنتجات -->
-  <div class="products-container"></div>
-</main>
-
-<script>
-// ===== بيانات المنتجات =====
-const allProducts = [
-  {title: "قلم أزرق", price: "10 ر.س", image: "https://via.placeholder.com/150", url: "#"},
-  {title: "دفتر ملاحظات", price: "15 ر.س", image: "https://via.placeholder.com/150", url: "#"},
-  {title: "قلم حبر أسود", price: "12 ر.س", image: "https://via.placeholder.com/150", url: "#"},
-  {title: "دفتر رسم", price: "20 ر.س", image: "https://via.placeholder.com/150", url: "#"},
-  {title: "أقلام ألوان", price: "25 ر.س", image: "https://via.placeholder.com/150", url: "#"}
-];
-
-// ===== وظائف البحث =====
-function searchProducts(query) {
-  const resultsContainer = document.querySelector(".products-container");
-  resultsContainer.innerHTML = ""; // مسح النتائج السابقة
-
-  const filtered = allProducts.filter(p => p.title.includes(query));
-  filtered.sort(() => 0.5 - Math.random()); // ترتيب عشوائي
-
-  filtered.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "product-card";
-    card.innerHTML = `
-      <img src="${p.image}" alt="${p.title}">
-      <h3>${p.title}</h3>
-      <p>${p.price}</p>
-      <a href="${p.url}" target="_blank">عرض المنتج</a>
-    `;
-    resultsContainer.appendChild(card);
-  });
-}
-
-// ===== شريط البحث =====
-document.addEventListener("DOMContentLoaded", function() {
-  const toggle = document.getElementById("searchToggle");
-  const box = document.getElementById("searchBox");
-  const searchInput = box.querySelector("input");
-
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    box.classList.toggle("active");
-    if (box.classList.contains("active")) searchInput.focus();
-  });
-
-  document.addEventListener("click", function(e) {
-    if (!box.contains(e.target) && !toggle.contains(e.target)) {
-      box.classList.remove("active");
-    }
-  });
-
-  searchInput.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-      const query = searchInput.value.trim();
-      if (query !== "") searchProducts(query);
-    }
-  });
-});
-</script>
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>بنر كبير وبنرات صغيرة بجانب بعض</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .big-banner {
-      width: 100%;
-      height: 300px;
-      background-image: url('https://picsum.photos/1200/300?random=1');
-      background-size: cover;
-      background-position: center;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      font-size: 28px;
-      margin-bottom: 30px;
-      text-decoration: none;
-    }
-    .banner-row {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      gap: 10px;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 50px;
-    }
-    .banner {
-      flex: 1;
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 8px;
-      font-size: 18px;
-      transition: transform 0.3s;
-      text-decoration: none;
-    }
-    .banner:hover {
-      transform: scale(1.05);
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <!-- بنر كبير مع رابط -->
-    <a href="https://example.com/big-banner" class="big-banner">بنر كبير في الأعلى</a>
-
-    <!-- ثلاث بنرات صغيرة مع روابط -->
-    <div class="banner-row">
-      <a href="https://example.com/banner1" class="banner" style="background-image: url('https://picsum.photos/400/200?random=2');">بنر 1</a>
-      <a href="https://example.com/banner2" class="banner" style="background-image: url('https://picsum.photos/400/200?random=3');">بنر 2</a>
-      <a href="https://example.com/banner3" class="banner" style="background-image: url('https://picsum.photos/400/200?random=4');">بنر 3</a>
-    </div>
+<!-- ===== بنر متحرك ===== -->
+<div class="slider" id="slider">
+  <div class="slides" id="slides">
+    <div class="slide" style="background-image: url('https://picsum.photos/1200/300?random=1')">بنر 1</div>
+    <div class="slide" style="background-image: url('https://picsum.photos/1200/300?random=2')">بنر 2</div>
+    <div class="slide" style="background-image: url('https://picsum.photos/1200/300?random=3')">بنر 3</div>
   </div>
-</body>
-</html>
+</div>
 
+<!-- ===== بنرات صغيرة ===== -->
+<div class="small-banners">
+  <div class="small-banner" style="background-image: url('https://picsum.photos/400/150?random=4')">بنر صغير 1</div>
+  <div class="small-banner" style="background-image: url('https://picsum.photos/400/150?random=5')">بنر صغير 2</div>
+  <div class="small-banner" style="background-image: url('https://picsum.photos/400/150?random=6')">بنر صغير 3</div>
+  <div class="small-banner" style="background-image: url('https://picsum.photos/400/150?random=7')">بنر صغير 4</div>
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <title>فوتر كلاف</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Tajawal', sans-serif;
-      direction: rtl;
-    }
-
-    footer {
-      background-color: #ff8159;
-      color: white;
-      padding: 50px 20px 20px;
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-    }
-
-    .footer-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .footer-logo {
-      text-align: center;
-    }
-
-    .footer-logo h2 {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .footer-logo p {
-      font-size: 15px;
-      margin: 5px 0;
-    }
-
-    .vat-img {
-      height: 40px;
-      margin-top: 10px;
-    }
-
-    .footer-section h3 {
-      font-size: 18px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-section ul li {
-      margin-bottom: 10px;
-    }
-
-    .footer-section ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 15px;
-    }
-
-    .footer-section ul li a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-contact p {
-      font-size: 15px;
-      margin: 5px 0;
-    }
-
-    .social-icons {
-      margin-top: 15px;
-      display: flex;
-      gap: 15px;
-    }
-
-    .social-icons a {
-      width: 40px;
-      height: 40px;
-      border: 1px solid white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-    }
-
-    .social-icons a img {
-      width: 20px;
-      height: 20px;
-      filter: brightness(0) invert(1); /* لجعل الأيقونات بيضاء */
-    }
-
-    .social-icons a:hover {
-      background-color: rgba(255,255,255,0.2);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 30px;
-      padding-top: 20px;
-      font-size: 14px;
-      border-top: 1px solid rgba(255,255,255,0.4);
-    }
-
-    @media (max-width: 600px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .social-icons {
-        justify-content: center;
-      }
-    }
-  </style>
-</head>
-<body>
-
+<!-- ===== الفوتر ===== -->
 <footer>
   <div class="footer-container">
-
-    <!-- الشعار -->
-    <div class="footer-logo">
-      <h2>كـلاف</h2>
-      <p>نطمح لتقديم تجربة تسوق مختلفة</p>
-      <p>الرقم الضريبي: <strong>312646157900003</strong></p>
-      <img class="vat-img" src="https://cdn.salla.sa/tgOfK/VATicon.png" alt="شعار ضريبة القيمة المضافة">
-    </div>
-
-    <!-- روابط مهمة -->
     <div class="footer-section">
       <h3>روابط مهمة</h3>
       <ul>
         <li><a href="#">الرئيسية</a></li>
         <li><a href="#">منتجاتنا</a></li>
-        <li><a href="#">سياسة الاستبدال والاسترجاع</a></li>
-        <li><a href="#">الأسئلة الشائعة</a></li>
+        <li><a href="#">عروض</a></li>
+        <li><a href="#">تواصل معنا</a></li>
       </ul>
     </div>
-
-    <!-- تواصل معنا -->
-    <div class="footer-section footer-contact">
+    <div class="footer-section">
       <h3>تواصل معنا</h3>
       <p>+966511268269</p>
       <p>info@klafstore.com</p>
-      <div class="social-icons">
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/3669/3669950.png" alt="TikTok"></a>
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968891.png" alt="X"></a>
-        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
-      </div>
     </div>
-
-    <!-- السياسات -->
-    <div class="footer-section">
-      <h3>سياسات</h3>
-      <ul>
-        <li><a href="#">سياسة الخصوصية</a></li>
-        <li><a href="#">الشروط والأحكام</a></li>
-        <li><a href="#">سياسة الشحن</a></li>
-      </ul>
-    </div>
-
   </div>
-
-  <!-- أسفل الفوتر -->
   <div class="footer-bottom">
     جميع الحقوق محفوظة © كلاف 2025
   </div>
 </footer>
 
+<!-- ===== سكربت البنر المتحرك ===== -->
+<script>
+let currentSlide = 0;
+const slides = document.getElementById('slides');
+const totalSlides = slides.children.length;
+
+function showSlide(index) {
+  slides.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % totalSlides;
+  showSlide(currentSlide);
+}
+
+setInterval(nextSlide, 3000); // تغيير كل 3 ثواني
+</script>
+
 </body>
 </html>
-
