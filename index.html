@@ -3,239 +3,276 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>صفحة ديناميكية - KlafStore</title>
+<title>مكتبة كلاف - KlafStore</title>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* ===== تصميم عام ===== */
 body {
   margin: 0;
   font-family: 'Tajawal', sans-serif;
   background-color: #ECEADD;
-  color: #333;
+  overflow-x: hidden;
 }
 
-/* ===== الهيدر ===== */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #f5576c;
-  padding: 10px 25px;
+/* ===== المحتوى الرئيسي ===== */
+.content {
+  padding: 20px;
+  min-height: 100vh;
+  margin-top: 60px;
+}
+
+/* ===== الهيدر المتحرك من الأعلى ===== */
+.top-panel {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.logo img {
-  height: 55px;
-  cursor: pointer;
-}
-
-nav a {
+  height: 30vh;
+  background-color: #FC8443;
   color: #fff;
-  text-decoration: none;
-  margin-left: 15px;
-  font-weight: bold;
-}
-
-nav a:hover {
-  opacity: 0.8;
-}
-
-/* ===== بنر متحرك (Slider) ===== */
-.slider {
-  margin-top: 80px;
-  width: 100%;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  transition: height 0.3s ease;
   overflow: hidden;
-  position: relative;
-  border-radius: 10px;
-}
-
-.slides {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  flex-direction: column;
+  z-index: 1000;
 }
 
-.slide {
-  min-width: 100%;
-  height: 300px;
-  background-size: cover;
-  background-position: center;
+/* شريط السحب */
+.panel-header {
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 28px;
-  color: #fff;
+  cursor: grab;
+  background-color: rgba(255,255,255,0.2);
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-
-/* ===== بنرات صغيرة ===== */
-.small-banners {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 30px 20px;
-  justify-content: center;
-}
-
-.small-banner {
-  flex: 1;
-  min-width: 200px;
-  height: 150px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 8px;
   position: relative;
+}
+
+.panel-header span {
+  width: 50px;
+  height: 5px;
+  background: #fff;
+  border-radius: 3px;
+}
+
+.panel-header::before {
+  content: "اسحب من هنا";
+  position: absolute;
+  left: 10px;
+  font-size: 14px;
   color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  font-weight: normal;
+}
+
+/* شبكة الأيقونات */
+.icons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  padding: 15px 20px;
+}
+
+/* أزرار الأيقونات */
+.icon-button {
+  background-color: rgba(255,255,255,0.1);
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: background 0.3s, transform 0.3s;
 }
 
-.small-banner:hover {
+.icon-button:hover {
+  background-color: rgba(255,255,255,0.25);
   transform: scale(1.05);
 }
 
-/* ===== فوتر ===== */
-footer {
-  background-color: #f5576c;
-  color: #fff;
-  padding: 50px 20px 20px;
-  margin-top: 40px;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-}
-
-.footer-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.footer-section h3 {
-  font-size: 18px;
-  margin-bottom: 15px;
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 10px;
-}
-
-.footer-section ul li a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer-section ul li a:hover {
-  text-decoration: underline;
-}
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 30px;
-  padding-top: 20px;
+.icon-button h4 {
+  margin: 5px 0 0 0;
   font-size: 14px;
-  border-top: 1px solid rgba(255,255,255,0.4);
 }
 
-/* ===== متجاوب ===== */
+/* محتوى القسم */
+.section-content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: none; /* مخفي بشكل افتراضي */
+}
+
+/* الأقسام النشطة */
+.section-content.active {
+  display: block;
+}
+
+/* Accordion */
+.accordion-item {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.accordion-header {
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.accordion-body {
+  display: none;
+  padding: 10px;
+}
+
+.accordion-item.active .accordion-body {
+  display: block;
+}
+
+/* صور قابلة للتكبير */
+.section-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.section-content img:hover {
+  transform: scale(1.05);
+}
+
+/* تحسين التجاوب */
 @media (max-width: 768px) {
-  .small-banners {
-    flex-direction: column;
-    align-items: center;
-  }
-  .small-banner {
-    width: 90%;
-  }
+  .top-panel { height: 40vh; }
+  .icons-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== الهيدر ===== -->
-<header>
-  <div class="logo">
-    <img src="https://raw.githubusercontent.com/KH515/KLAF/main/Image/logo.png.png" alt="شعار كلاف">
-  </div>
-  <nav>
-    <a href="#">الرئيسية</a>
-    <a href="#">منتجاتنا</a>
-    <a href="#">عروض</a>
-    <a href="#">تواصل معنا</a>
-  </nav>
-</header>
+<div class="content">
+  <h1>مرحبًا بك في مكتبة كلاف</h1>
+  <p>جرب سحب الهيدر لأسفل لتصفح الأقسام المختلفة.</p>
+</div>
 
-<!-- ===== بنر متحرك ===== -->
-<div class="slider" id="slider">
-  <div class="slides" id="slides">
-    <div class="slide" style="background-image: url('https://picsum.photos/1200/300?random=1')">بنر 1</div>
-    <div class="slide" style="background-image: url('https://picsum.photos/1200/300?random=2')">بنر 2</div>
-    <div class="slide" style="background-image: url('https://picsum.photos/1200/300?random=3')">بنر 3</div>
+<!-- ===== الهيدر المتحرك ===== -->
+<div class="top-panel" id="topPanel">
+  <div class="panel-header" id="panelHeader">
+    <span></span>
+  </div>
+  
+  <!-- شبكة الأيقونات -->
+  <div class="icons-grid">
+    <div class="icon-button" data-section="about">قصتنا</div>
+    <div class="icon-button" data-section="return">سياسة الإرجاع</div>
+    <div class="icon-button" data-section="terms">الشروط والأحكام</div>
+    <div class="icon-button" data-section="faq">الأسئلة الشائعة</div>
+    <div class="icon-button" data-section="docs">المستندات القانونية</div>
+    <div class="icon-button" data-section="start">متى بدأ كلاف</div>
+  </div>
+  
+  <!-- محتوى الأقسام -->
+  <div class="section-content" id="about">
+    <h3>قصتنا</h3>
+    <p>تأسست كلاف بهدف تقديم تجربة تسوق مختلفة، نطمح للابتكار والجودة في كل منتج.</p>
+  </div>
+  
+  <div class="section-content" id="return">
+    <h3>سياسة الإرجاع والاستبدال</h3>
+    <p>يمكنك إعادة أو استبدال المنتج خلال 14 يومًا من تاريخ الاستلام.</p>
+  </div>
+  
+  <div class="section-content" id="terms">
+    <h3>الشروط والأحكام</h3>
+    <p>استخدام الموقع يخضع للشروط التالية...</p>
+  </div>
+  
+  <div class="section-content" id="faq">
+    <h3>الأسئلة الشائعة</h3>
+    <div class="accordion-item">
+      <div class="accordion-header">كيف أطلب المنتج؟</div>
+      <div class="accordion-body">يمكنك الطلب من خلال الموقع بسهولة باستخدام زر "شراء الآن".</div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">ما طرق الدفع؟</div>
+      <div class="accordion-body">الدفع متاح عبر بطاقات الائتمان، الدفع عند الاستلام، أو بايبال.</div>
+    </div>
+  </div>
+  
+  <div class="section-content" id="docs">
+    <h3>المستندات القانونية</h3>
+    <img src="https://via.placeholder.com/400x200?text=السجل+التجاري" alt="السجل التجاري">
+    <img src="https://via.placeholder.com/400x200?text=ترخيص+الجودة" alt="ترخيص الجودة">
+  </div>
+  
+  <div class="section-content" id="start">
+    <h3>متى بدأ كلاف</h3>
+    <p>بدأ كلاف في عام 2020 مع رؤية لتقديم تجربة تسوق مبتكرة وسهلة.</p>
   </div>
 </div>
 
-<!-- ===== بنرات صغيرة ===== -->
-<div class="small-banners">
-  <div class="small-banner" style="background-image: url('https://picsum.photos/400/150?random=4')">بنر صغير 1</div>
-  <div class="small-banner" style="background-image: url('https://picsum.photos/400/150?random=5')">بنر صغير 2</div>
-  <div class="small-banner" style="background-image: url('https://picsum.photos/400/150?random=6')">بنر صغير 3</div>
-  <div class="small-banner" style="background-image: url('https://picsum.photos/400/150?random=7')">بنر صغير 4</div>
-</div>
-
-<!-- ===== الفوتر ===== -->
-<footer>
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>روابط مهمة</h3>
-      <ul>
-        <li><a href="#">الرئيسية</a></li>
-        <li><a href="#">منتجاتنا</a></li>
-        <li><a href="#">عروض</a></li>
-        <li><a href="#">تواصل معنا</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h3>تواصل معنا</h3>
-      <p>+966511268269</p>
-      <p>info@klafstore.com</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    جميع الحقوق محفوظة © كلاف 2025
-  </div>
-</footer>
-
-<!-- ===== سكربت البنر المتحرك ===== -->
 <script>
-let currentSlide = 0;
-const slides = document.getElementById('slides');
-const totalSlides = slides.children.length;
+const panel = document.getElementById('topPanel');
+const header = document.getElementById('panelHeader');
+let isExpanded = false;
 
-function showSlide(index) {
-  slides.style.transform = `translateX(-${index * 100}%)`;
-}
+// فتح / غلق السحب عند الضغط
+header.addEventListener('click', () => {
+  if (isExpanded) {
+    panel.style.height = '30vh';
+  } else {
+    panel.style.height = '100vh';
+  }
+  isExpanded = !isExpanded;
+});
 
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % totalSlides;
-  showSlide(currentSlide);
-}
+// السحب باللمس
+let startY = 0;
+let startHeight = 0;
+header.addEventListener('touchstart', e => {
+  startY = e.touches[0].clientY;
+  startHeight = panel.offsetHeight;
+});
+header.addEventListener('touchmove', e => {
+  const dy = e.touches[0].clientY - startY;
+  let newHeight = startHeight + dy;
+  if(newHeight < 100) newHeight = 100;
+  if(newHeight > window.innerHeight) newHeight = window.innerHeight;
+  panel.style.height = newHeight + 'px';
+});
+header.addEventListener('touchend', e => {
+  if(panel.offsetHeight > window.innerHeight/2) {
+    panel.style.height = '100vh';
+    isExpanded = true;
+  } else {
+    panel.style.height = '30vh';
+    isExpanded = false;
+  }
+});
 
-setInterval(nextSlide, 3000); // تغيير كل 3 ثواني
+// اختيار القسم لعرضه داخل السحب
+const buttons = document.querySelectorAll('.icon-button');
+const sections = document.querySelectorAll('.section-content');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.getAttribute('data-section');
+    sections.forEach(sec => sec.classList.remove('active'));
+    const activeSection = document.getElementById(target);
+    if(activeSection) activeSection.classList.add('active');
+  });
+});
+
+// Accordion
+const accordions = document.querySelectorAll('.accordion-header');
+accordions.forEach(acc => {
+  acc.addEventListener('click', () => {
+    const parent = acc.parentElement;
+    parent.classList.toggle('active');
+  });
+});
 </script>
 
 </body>
