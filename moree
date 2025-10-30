@@ -1,1 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مكتبة كلاف - KlafStore</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Tajawal', sans-serif;
+  background-color: #ECEADD;
+  overflow-x: hidden;
+}
 
+/* ===== المحتوى الرئيسي ===== */
+.content {
+  padding: 20px;
+  min-height: 100vh;
+  margin-top: 60px;
+}
+
+/* ===== الهيدر المتحرك من الأعلى ===== */
+.top-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px; /* البداية: شريط صغير فقط */
+  background-color: #FC8443;
+  color: #fff;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  transition: height 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+/* شريط السحب */
+.panel-header {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+  background-color: rgba(255,255,255,0.2);
+  font-weight: bold;
+  position: relative;
+}
+
+.panel-header span {
+  width: 50px;
+  height: 5px;
+  background: #fff;
+  border-radius: 3px;
+}
+
+.panel-header::before {
+  content: "اسحب من هنا";
+  position: absolute;
+  left: 10px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: normal;
+}
+
+/* شبكة الأيقونات */
+.icons-grid {
+  display: none; /* مخفية بالبداية */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+  padding: 15px 20px;
+}
+
+.icon-button {
+  background-color: rgba(255,255,255,0.1);
+  padding: 10px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.icon-button:hover {
+  background-color: rgba(255,255,255,0.25);
+  transform: scale(1.05);
+}
+
+.icon-button h4 {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+}
+
+/* محتوى القسم */
+.section-container {
+  padding: 0 20px 20px 20px;
+}
+
+.section-content {
+  display: none;
+  padding: 10px 0;
+}
+
+/* Accordion */
+.accordion-item {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.accordion-header {
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.accordion-body {
+  display: none;
+  padding: 10px;
+}
+
+.accordion-item.active .accordion-body {
+  display: block;
+}
+
+/* صور قابلة للتكبير */
+.section-content img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.section-content img:hover {
+  transform: scale(1.05);
+}
+
+/* تحسين التجاوب */
+@media (max-width: 768px) {
+  .icons-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
+}
+</style>
+</head>
+<body>
+
+<div class="content">
+  <h1>مرحبًا بك في مكتبة كلاف</h1>
+  <p>جرب سحب الهيدر لأسفل لتصفح الأقسام المختلفة.</p>
+</div>
+
+<!-- ===== الهيدر المتحرك ===== -->
+<div class="top-panel" id="topPanel">
+  <div class="panel-header" id="panelHeader"><span></span></div>
+  
+  <div class="icons-grid" id="iconsGrid">
+    <div class="icon-button" data-section="about">قصتنا</div>
+    <div class="icon-button" data-section="return">سياسة الإرجاع</div>
+    <div class="icon-button" data-section="terms">الشروط والأحكام</div>
+    <div class="icon-button" data-section="faq">الأسئلة الشائعة</div>
+    <div class="icon-button" data-section="docs">المستندات القانونية</div>
+    <div class="icon-button" data-section="start">متى بدأ كلاف</div>
+  </div>
+
+  <!-- المحتوى لكل قسم -->
+  <div class="section-container" id="sectionContainer">
+    <div class="section-content" id="about">
+      <h3>قصتنا</h3>
+      <p>تأسست كلاف بهدف تقديم تجربة تسوق مختلفة، نطمح للابتكار والجودة في كل منتج.</p>
+    </div>
+    <div class="section-content" id="return">
+      <h3>سياسة الإرجاع والاستبدال</h3>
+      <p>يمكنك إعادة أو استبدال المنتج خلال 14 يومًا من تاريخ الاستلام.</p>
+    </div>
+    <div class="section-content" id="terms">
+      <h3>الشروط والأحكام</h3>
+      <p>استخدام الموقع يخضع للشروط التالية...</p>
+    </div>
+    <div class="section-content" id="faq">
+      <h3>الأسئلة الشائعة</h3>
+      <div class="accordion-item">
+        <div class="accordion-header">كيف أطلب المنتج؟</div>
+        <div class="accordion-body">يمكنك الطلب من خلال الموقع بسهولة باستخدام زر "شراء الآن".</div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">ما طرق الدفع؟</div>
+        <div class="accordion-body">الدفع متاح عبر بطاقات الائتمان، الدفع عند الاستلام، أو بايبال.</div>
+      </div>
+    </div>
+    <div class="section-content" id="docs">
+      <h3>المستندات القانونية</h3>
+      <img src="https://via.placeholder.com/400x200?text=السجل+التجاري" alt="السجل التجاري">
+      <img src="https://via.placeholder.com/400x200?text=ترخيص+الجودة" alt="ترخيص الجودة">
+    </div>
+    <div class="section-content" id="start">
+      <h3>متى بدأ كلاف</h3>
+      <p>بدأ كلاف في عام 2020 مع رؤية لتقديم تجربة تسوق مبتكرة وسهلة.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const panel = document.getElementById('topPanel');
+const header = document.getElementById('panelHeader');
+const iconsGrid = document.getElementById('iconsGrid');
+const sectionContainer = document.getElementById('sectionContainer');
+const sections = sectionContainer.querySelectorAll('.section-content');
+let isExpanded = false;
+
+// فتح السحب عند الضغط
+header.addEventListener('click', () => {
+  if(!isExpanded){
+    panel.style.height = '80vh';
+    iconsGrid.style.display = 'grid';
+  } else {
+    panel.style.height = '40px';
+    iconsGrid.style.display = 'none';
+    sections.forEach(sec => sec.style.display = 'none');
+  }
+  isExpanded = !isExpanded;
+});
+
+// الضغط على أيقونة لإظهار محتوى القسم
+const buttons = document.querySelectorAll('.icon-button');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.getAttribute('data-section');
+    sections.forEach(sec => sec.style.display = 'none');
+    const activeSection = document.getElementById(target);
+    if(activeSection) activeSection.style.display = 'block';
+  });
+});
+
+// Accordion داخل الأسئلة الشائعة
+const accordions = document.querySelectorAll('.accordion-header');
+accordions.forEach(acc => {
+  acc.addEventListener('click', () => {
+    const parent = acc.parentElement;
+    parent.classList.toggle('active');
+  });
+});
+</script>
+
+</body>
+</html>
