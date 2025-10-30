@@ -26,7 +26,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 30vh;
+  height: 60px; /* البداية: فقط زر السحب */
   background-color: #FC8443;
   color: #fff;
   border-bottom-left-radius: 30px;
@@ -73,9 +73,14 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 15px;
   padding: 15px 20px;
+  opacity: 0; /* مخفي افتراضياً */
+  transition: opacity 0.3s ease;
 }
 
-/* أزرار الأيقونات */
+.icons-grid.active {
+  opacity: 1;
+}
+
 .icon-button {
   background-color: rgba(255,255,255,0.1);
   padding: 10px;
@@ -100,10 +105,9 @@ body {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
-  display: none; /* مخفي بشكل افتراضي */
+  display: none;
 }
 
-/* الأقسام النشطة */
 .section-content.active {
   display: block;
 }
@@ -146,7 +150,7 @@ body {
 
 /* تحسين التجاوب */
 @media (max-width: 768px) {
-  .top-panel { height: 40vh; }
+  .top-panel { height: 60px; }
   .icons-grid { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); }
 }
 </style>
@@ -163,9 +167,8 @@ body {
   <div class="panel-header" id="panelHeader">
     <span></span>
   </div>
-  
-  <!-- شبكة الأيقونات -->
-  <div class="icons-grid">
+
+  <div class="icons-grid" id="iconsGrid">
     <div class="icon-button" data-section="about">قصتنا</div>
     <div class="icon-button" data-section="return">سياسة الإرجاع</div>
     <div class="icon-button" data-section="terms">الشروط والأحكام</div>
@@ -174,22 +177,19 @@ body {
     <div class="icon-button" data-section="start">متى بدأ كلاف</div>
   </div>
   
-  <!-- محتوى الأقسام -->
+  <!-- المحتوى لكل قسم -->
   <div class="section-content" id="about">
     <h3>قصتنا</h3>
     <p>تأسست كلاف بهدف تقديم تجربة تسوق مختلفة، نطمح للابتكار والجودة في كل منتج.</p>
   </div>
-  
   <div class="section-content" id="return">
     <h3>سياسة الإرجاع والاستبدال</h3>
     <p>يمكنك إعادة أو استبدال المنتج خلال 14 يومًا من تاريخ الاستلام.</p>
   </div>
-  
   <div class="section-content" id="terms">
     <h3>الشروط والأحكام</h3>
     <p>استخدام الموقع يخضع للشروط التالية...</p>
   </div>
-  
   <div class="section-content" id="faq">
     <h3>الأسئلة الشائعة</h3>
     <div class="accordion-item">
@@ -201,13 +201,11 @@ body {
       <div class="accordion-body">الدفع متاح عبر بطاقات الائتمان، الدفع عند الاستلام، أو بايبال.</div>
     </div>
   </div>
-  
   <div class="section-content" id="docs">
     <h3>المستندات القانونية</h3>
     <img src="https://via.placeholder.com/400x200?text=السجل+التجاري" alt="السجل التجاري">
     <img src="https://via.placeholder.com/400x200?text=ترخيص+الجودة" alt="ترخيص الجودة">
   </div>
-  
   <div class="section-content" id="start">
     <h3>متى بدأ كلاف</h3>
     <p>بدأ كلاف في عام 2020 مع رؤية لتقديم تجربة تسوق مبتكرة وسهلة.</p>
@@ -217,38 +215,42 @@ body {
 <script>
 const panel = document.getElementById('topPanel');
 const header = document.getElementById('panelHeader');
+const iconsGrid = document.getElementById('iconsGrid');
 let isExpanded = false;
 
-// فتح / غلق السحب عند الضغط
+// فتح / غلق السحب عند الضغط على زر السحب
 header.addEventListener('click', () => {
   if (isExpanded) {
-    panel.style.height = '30vh';
+    panel.style.height = '60px';
+    iconsGrid.classList.remove('active');
   } else {
-    panel.style.height = '100vh';
+    panel.style.height = '80vh';
+    iconsGrid.classList.add('active');
   }
   isExpanded = !isExpanded;
 });
 
-// السحب باللمس
+// السحب باللمس والماوس
 let startY = 0;
 let startHeight = 0;
-header.addEventListener('touchstart', e => {
-  startY = e.touches[0].clientY;
-  startHeight = panel.offsetHeight;
-});
+
+header.addEventListener('touchstart', e => { startY = e.touches[0].clientY; startHeight = panel.offsetHeight; });
 header.addEventListener('touchmove', e => {
   const dy = e.touches[0].clientY - startY;
   let newHeight = startHeight + dy;
-  if(newHeight < 100) newHeight = 100;
+  if(newHeight < 60) newHeight = 60;
   if(newHeight > window.innerHeight) newHeight = window.innerHeight;
   panel.style.height = newHeight + 'px';
+  iconsGrid.style.opacity = (newHeight > 100) ? 1 : 0;
 });
 header.addEventListener('touchend', e => {
   if(panel.offsetHeight > window.innerHeight/2) {
-    panel.style.height = '100vh';
+    panel.style.height = '80vh';
+    iconsGrid.classList.add('active');
     isExpanded = true;
   } else {
-    panel.style.height = '30vh';
+    panel.style.height = '60px';
+    iconsGrid.classList.remove('active');
     isExpanded = false;
   }
 });
