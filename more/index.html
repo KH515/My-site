@@ -1,202 +1,307 @@
-<<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صفحة More</title>
-  <!-- استدعاء ملف التنسيقات -->
-  <link rel="stylesheet" href="css/style.css">
-  <!-- خط Open Sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>صفحة سوداء - KLAF</title>
 
-  <!-- الهيدر -->
-  <header class="header">
-    <div class="logo">
-      <img src="images/logo.png" alt="شعار كلاف">
-    </div>
-    <div class="search">
-      <input type="text" placeholder="ابحث هنا...">
-      <button>🔍</button>
-    </div>
-  </header>
+  <!-- خط عربي جميل -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;800&display=swap" rel="stylesheet">
 
-  <!-- الأيقونات -->
-  <section class="icons-grid">
-    <div class="icon-box">الأسئلة الشائعة</div>
-    <div class="icon-box">طلبات الجملة</div>
-    <div class="icon-box">مدونة مقالات</div>
-    <div class="icon-box">بيانات الشركة</div>
-    <div class="icon-box">تفاصيل الاسترجاع</div>
-    <div class="icon-box">المزيد</div>
-  </section>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مميزات كلاف</title>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Tajawal', sans-serif;
-      background: #0d0d0d;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
+    :root{
+      --bg:#0b0b0b;           /* خلفية عامة */
+      --card:#0f0f10;         /* بطاقات */
+      --muted:#9aa0a6;        /* نص ثانوي */
+      --accent:#ff7a00;       /* لون شعار/أزرار (ممكن تغييره) */
+      --glass: rgba(255,255,255,0.03);
     }
 
-    .card {
-      background: #1a1a1a;
-      border-radius: 20px;
-      padding: 20px;
-      margin: 15px 0;
-      text-align: right;
-      width: 90%;
-      max-width: 420px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: "Tajawal", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg), #050505);
+      color:#eee;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    /* ===== هيدر ===== */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between; /* logo يمين، عناصر يسار */
+      gap:16px;
+      padding:18px 28px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+      backdrop-filter: blur(6px);
+      position:sticky;
+      top:0;
+      z-index:50;
+      border-bottom:1px solid rgba(255,255,255,0.03);
     }
 
-    .card img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 15px;
+    /* لوقو على اليمين (rtl) */
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo img{
+      width:56px;
+      height:56px;
+      object-fit:contain;
+      border-radius:10px;
+      background:var(--glass);
+      padding:6px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+    .logo .brand{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-end;
+      line-height:1;
+    }
+    .logo .brand .title{ font-weight:800; font-size:16px; letter-spacing:0.2px; color:#fff; }
+    .logo .brand .tag{ font-size:12px; color:var(--muted); }
+
+    /* قائمة صغيرة على اليسار */
+    nav{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:8px;
+      font-weight:600;
+      transition:all .18s ease;
+    }
+    nav a:hover{ color:#fff; background: rgba(255,255,255,0.03); transform:translateY(-2px); }
+
+    /* زر CTA */
+    .cta{
+      background: linear-gradient(90deg, var(--accent), #ff9b3b);
+      color:#060606;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      box-shadow: 0 6px 20px rgba(255,122,0,0.12);
+      text-decoration:none;
     }
 
-    .card h2 {
-      margin: 0;
-      font-size: 20px;
-      font-weight: 700;
-      color: #EEEEEE; /* العنوان الأساسي */
+    /* ===== المحتوى الرئيسي ===== */
+    main{
+      max-width:1100px;
+      margin:36px auto;
+      padding:20px;
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:22px;
     }
 
-    .card h3 {
-      margin: 6px 0;
-      font-size: 16px;
-      font-weight: 600;
-      color: #FF835E; /* العنوان الفرعي */
+    /* بطاقة المحتوى */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:20px;
+      border: 1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
     }
 
-    .card p {
-      margin: 6px 0;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.6;
-      color: #CCCCCC; /* نصوص ثانوية */
+    .hero{
+      padding:32px;
+      border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .hero h1{ margin:0; font-size:28px; color:#fff; }
+    .hero p{ margin:0; color:var(--muted); }
+
+    /* شبكة عناصر توضيحية */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+    .tile{
+      padding:14px;
+      border-radius:10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.025);
+    }
+    .muted{ color:var(--muted); font-size:14px; }
+
+    /* الشريط الجانبي */
+    aside .profile{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .avatar{
+      width:64px;height:64px;border-radius:12px;background:linear-gradient(180deg,#111,#0b0b0b);
+      display:grid;place-items:center;font-weight:700;color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .small-btn{
+      display:inline-block;
+      padding:8px 12px;
+      border-radius:10px;
+      background: rgba(255,255,255,0.02);
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
     }
 
-    .card .btn {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 20px;
-      background: #FF835E; /* لون الزر */
-      color: #fff;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s ease;
+    /* فوتر بسيط */
+    footer{
+      margin:40px auto 28px;
+      max-width:1100px;
+      color:var(--muted);
+      font-size:14px;
+      text-align:center;
+      padding:18px 12px;
     }
 
-    .card .btn:hover {
-      background: #e46e4c; /* لون الزر عند المرور */
+    /* استجابة */
+    @media (max-width:900px){
+      main{ grid-template-columns: 1fr; padding:16px; margin:20px auto; }
+      nav{ display:none; } /* نخفي القائمة على الشاشات الصغيرة */
+      .logo .brand .title{ font-size:15px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- كارد 1 -->
-  <div class="card">
-    <img src="images/A1.png" alt="ميزة ١">
-    <h2>التحكم في الصوت</h2>
-    <h3>الموازنة بين الجمهور والمعلّق</h3>
-    <p>استمتع بتجربة مشاهدة فريدة عبر التحكم بمستوى صوت الجمهور مقارنة بصوت المعلّق.</p>
-    <p>ميزة مثالية لعشاق التفاصيل ولمن يفضلون أجواء الملاعب الحية.</p>
-    <a href="#" class="btn">للمزيد</a>
-  </div>
+<header>
+  <!-- اللوقو: غيّر src إلى رابط اللوقو الفعلي عندك -->
+  <a class="logo" href="/">
+    <img src="https://raw.githubusercontent.com/KH515/KLAF/main/Image/AAA.png.png" alt="لوغو المتجر" />
+    <div class="brand">
+      <div class="title">KLAF كلاف</div>
+      <div class="tag">Stationery • تصاميم • مستلزمات</div>
+    </div>
+  </a>
 
-  <!-- كارد 2 -->
-  <div class="card">
-    <img src="images/A2.png" alt="ميزة ٢">
-    <h2>تعدد الأجهزة</h2>
-    <h3>شاهد في نفس الوقت</h3>
-    <p>تابع المباريات على جهازين مختلفين (مثلاً التلفاز والهاتف) في نفس الوقت بكل سهولة.</p>
-    <p>تجربة سلسة بدون تقطيع أو تعارض بين الأجهزة.</p>
-    <a href="#" class="btn">للمزيد</a>
-  </div>
+  <nav aria-label="القائمة الرئيسية">
+    <a href="/ar/">الرئيسية</a>
+    <a href="/ar/categories">الأقسام</a>
+    <a href="/ar/offers">العروض</a>
+    <a class="cta" href="/ar/contact">تواصل معنا</a>
+  </nav>
+</header>
 
-  <!-- كارد 3 -->
-  <div class="card">
-    <img src="images/A3.png" alt="ميزة ٣">
-    <h2>جودة عالية</h2>
-    <h3>صورة وصوت نقية</h3>
-    <p>تمتع بمشاهدة بجودة HD أو FHD حسب توفرها، لتجربة مشاهدة استثنائية.</p>
-    <p>مثالي لعشاق التفاصيل الدقيقة في كل مباراة.</p>
-    <a href="#" class="btn">للمزيد</a>
-  </div>
+<main>
+  <!-- المحتوى الرئيسي -->
+  <section class="card">
+    <div class="hero">
+      <h1>مرحبا بك في KLAF</h1>
+      <p class="muted">تصاميم وهويات لمتجرك، منتجات مكتبية احترافية، وشحن سريع داخل المملكة.</p>
 
-  <!-- كارد 4 -->
-  <div class="card">
-    <img src="images/A4.png" alt="ميزة ٤">
-    <h2>واجهة سهلة</h2>
-    <h3>تجربة استخدام سلسة</h3>
-    <p>واجهة بسيطة وسهلة الاستخدام تمكنك من الوصول لكل المميزات بسهولة.</p>
-    <p>الوصول السريع لكل الخيارات بدون أي تعقيد.</p>
-    <a href="#" class="btn">للمزيد</a>
-  </div>
+      <div class="grid">
+        <div class="tile">
+          <strong>منتجات مميزة</strong>
+          <p class="muted">مجموعة مختارة بعناية من الأدوات المكتبية.</p>
+        </div>
+        <div class="tile">
+          <strong>تصاميم جاهزة</strong>
+          <p class="muted">قوالب بانرات وبوسترات قابلة للتعديل.</p>
+        </div>
+        <div class="tile">
+          <strong>دعم فني</strong>
+          <p class="muted">مساعدة سريعة في ربط المتجر وخدمات الدفع.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;">
+      <h3 style="margin:0 0 8px 0;">أحدث الإضافات</h3>
+      <div class="grid">
+        <div class="tile">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <strong>شنطة مدرسية</strong>
+              <div class="muted">مقاس متوسط - جودة ممتازة</div>
+            </div>
+            <div class="muted">120 ر.س</div>
+          </div>
+        </div>
+        <div class="tile">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <strong>طقم ألوان</strong>
+              <div class="muted">24 لون احترافي</div>
+            </div>
+            <div class="muted">45 ر.س</div>
+          </div>
+        </div>
+        <div class="tile">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <strong>دفتر تصميم</strong>
+              <div class="muted">ورق ثقيل، غلاف مطفي</div>
+            </div>
+            <div class="muted">18 ر.س</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- الشريط الجانبي (Aside) -->
+  <aside class="card">
+    <div class="profile">
+      <div class="avatar">KL</div>
+      <div style="flex:1">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-weight:700">مرحبا، زائر</div>
+            <div class="muted" style="font-size:13px">تصفح المتجر وأضف ما يعجبك</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:12px">
+      <strong>روابط سريعة</strong>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+        <a class="small-btn" href="/ar/cart">سلة المشتريات</a>
+        <a class="small-btn" href="/ar/invoice">الاستعلام عن فاتورة</a>
+        <a class="small-btn" href="/ar/contact">الدعم</a>
+      </div>
+    </div>
+
+    <div>
+      <strong>نبذة سريعة</strong>
+      <p class="muted" style="margin-top:8px">KLAF متجر إلكتروني للأدوات المكتبية والقرطاسية مع تركيز على تصاميم جذابة وتجربة مستخدم بسيطة.</p>
+    </div>
+  </aside>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> KLAF • كل الحقوق محفوظة
+</footer>
+
+<script>
+  // تحديث السنة تلقائياً
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* أي تعديل بسيط: 
+     - لتغير صورة اللوقو: غيّر خاصية src في العنصر <img class="logo img">.
+     - لتعديل ألوان: عدّل قيم CSS في :root (--accent وغيرها).
+  */
+</script>
 
 </body>
 </html>
-
-
-
-
-
-
-<!-- عرض اللوجو -->
-<img src="images/logo.PNG" alt="لوجو كلاف" style="display: block; margin: 20px auto; height: 80px;">
-
-
-
-<!-- شريط الأيقونات تحت الهيدر -->
-<div class="icon-bar">
-  <div class="icon-item">
-    <img src="images/company.png" alt="بيانات الشركة">
-    <span>بيانات الشركة</span>
-  </div>
-  <div class="icon-item">
-    <img src="images/returns.png" alt="تفاصيل الاسترجاع">
-    <span>تفاصيل الاسترجاع</span>
-  </div>
-  <div class="icon-item">
-    <img src="images/faq.png" alt="الأسئلة الشائعة">
-    <span>الأسئلة الشائعة</span>
-  </div>
-  <div class="icon-item">
-    <img src="images/wholesale.png" alt="طلبات الجملة">
-    <span>طلبات الجملة</span>
-  </div>
-  <div class="icon-item">
-    <img src="images/blog.png" alt="مدونة مقالات">
-    <span>مدونة مقالات</span>
-  </div>
-</div>
-
-
-
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-
