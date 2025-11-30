@@ -1,1 +1,197 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>سياساتنا — KlafStore</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --icon-color:#FF835E;
+      --bg-color:#000000;
+      --text-color:#ffffff;
+      --text-muted:#bbbbbb;
+      --card:#111111;
+      --radius:12px;
+      --maxwidth:980px;
+      --gap:20px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Tajawal",sans-serif;
+      background:var(--bg-color);
+      color:var(--text-color);
+      line-height:1.6;
+      padding:25px;
+    }
+
+    .container{
+      max-width:var(--maxwidth);
+      margin:0 auto;
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:30px;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:30px;
+    }
+
+    .icon-box{
+      width:70px;
+      height:70px;
+      border-radius:12px;
+      background:var(--icon-color);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 4px 12px rgba(0,0,0,0.15);
+      flex-shrink:0;
+    }
+
+    .icon-box svg{
+      width:40px;
+      height:40px;
+      fill:#fff;
+    }
+
+    h1{
+      margin:0;
+      font-size:28px;
+      font-weight:700;
+      color:#ffffff;
+    }
+
+    .lead{
+      margin:6px 0 0;
+      color:var(--text-muted);
+      font-weight:300;
+      font-size:15px;
+    }
+
+    /* layout */
+    .layout{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:var(--gap);
+      margin-top:25px;
+    }
+    @media (max-width:880px){
+      .layout{grid-template-columns:1fr}
+    }
+
+    nav.toc{
+      background:var(--card);
+      padding:16px;
+      border-radius:var(--radius);
+      border:1px solid #222;
+      position:sticky;
+      top:20px;
+    }
+
+    nav.toc h3{
+      margin:0 0 12px;
+      font-weight:700;
+      font-size:16px;
+      color:#ffffff;
+    }
+
+    nav.toc ul{
+      padding:0;
+      margin:0;
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    nav.toc a{
+      text-decoration:none;
+      color:#ffffff;
+      background:var(--bg-color);
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid #333;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:14px;
+      transition:0.2s;
+    }
+
+    nav.toc a:hover{
+      color:var(--icon-color);
+      border-color:var(--icon-color);
+    }
+
+    nav.toc svg{
+      width:18px;
+      height:18px;
+      fill:var(--icon-color);
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <!-- HEADER -->
+    <header>
+      <div class="icon-box">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 1.5l8 4v6c0 5.25-3.5 10.25-8 11-4.5-.75-8-5.75-8-11v-6l8-4z"/>
+        </svg>
+      </div>
+      <div>
+        <h1>سياساتنا</h1>
+        <p class="lead">مرحبًا بك — اختر السياسة لعرض التفاصيل في صفحة مستقلة.</p>
+      </div>
+    </header>
+
+    <div class="layout">
+
+      <!-- TOC -->
+      <nav class="toc">
+        <h3>فهرس السياسات</h3>
+        <ul>
+          <li><a href="privacy.html">
+            <svg viewBox="0 0 24 24"><path d="M12 1l9 4v6c0 7-4 12-9 14C7 23 3 18 3 11V5l9-4z"/></svg>
+            سياسة الخصوصية
+          </a></li>
+
+          <li><a href="terms.html">
+            <svg viewBox="0 0 24 24"><path d="M4 3h16v2H4zm2 4h12v2H6z"/></svg>
+            الشروط والأحكام
+          </a></li>
+
+          <li><a href="shipping.html">
+            <svg viewBox="0 0 24 24"><path d="M3 3h13v13H3zM16 8h5l-1 5h-4zM5 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm12 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+            سياسة الشحن
+          </a></li>
+
+          <li><a href="returns.html">
+            <svg viewBox="0 0 24 24"><path d="M12 2l4 4h-3v7H6v-2h5V6H8z"/></svg>
+            سياسة الاسترجاع والإلغاء
+          </a></li>
+
+          <li><a href="payment.html">
+            <svg viewBox="0 0 24 24"><path d="M2 6h20v12H2zm2 3v2h4V9z"/></svg>
+            طرق الدفع
+          </a></li>
+
+        </ul>
+      </nav>
+
+    </div>
+
+  </main>
+</body>
+</html>
