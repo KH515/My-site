@@ -60,34 +60,6 @@ body { font-family: "Tajawal", sans-serif; background:#000; color:#fff; padding:
 .service-text h3 { font-size:20px; font-weight:800; margin-bottom:10px; color:#fff; }
 .service-text p { font-size:14px; color:#ccc; line-height:1.5; }
 
-/* ===== شريط العلامات التجارية المتحرك ===== */
-.brand-slider {
-  width: 100%;
-  overflow: hidden;
-  background: #111;
-  padding: 15px 0;
-  margin-top: 40px;
-  border-top: 1px solid #333;
-}
-.brand-track {
-  display: flex;
-  gap: 40px;
-  animation: scrollBrands 20s linear infinite;
-}
-.brand-track img {
-  height: 50px;
-  filter: brightness(0.85);
-  transition: 0.3s ease;
-}
-.brand-track img:hover {
-  filter: brightness(1);
-  transform: scale(1.1);
-}
-@keyframes scrollBrands {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
 /* تحسين التجاوب */
 @media(max-width:992px) { .service-card { flex:0 1 45%; } .frame { width:calc(25% - 15px); height:100px; } }
 @media(max-width:768px) { .service-card { flex:0 1 100%; } .frame { width:calc(33.33% - 12px); height:90px; } }
@@ -98,27 +70,38 @@ body { font-family: "Tajawal", sans-serif; background:#000; color:#fff; padding:
 
 <!-- اللوقو -->
 <div class="logo-box">
-  <img src="https://raw.githubusercontent.com/KH515/KLAF/main/Image/logo.png.png" alt="KLAF Logo">
+  <img src="https://raw.githubusercontent.com/KH515/KLAF/main/Image/logo.png" alt="KLAF Logo">
 </div>
 
 <!-- صف صور متعدد -->
 <div class="frames-row">
   <div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 1"></div>
   <div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 2"></div>
-  <div aslass="frame"><img src="https://via.placeholder.com/150" alt="صورة 3"></div>
+  <div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 3"></div>
   <div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 4"></div>
   <div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 5"></div>
 </div>
 
-<!-- (بقية البنرات / الصور كما عندك) -->
+<!-- صف واحد -->
+<div class="frames-row"><div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 6"></div></div>
+<div class="frames-row"><div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 7"></div></div>
+<div class="frames-row"><div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 8"></div></div>
+<div class="frames-row"><div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 9"></div></div>
 
 <!-- طرق الدفع -->
 <div class="payment-methods">
   <div class="payment-title">طرق الدفع المتاحة</div>
   <div class="payment-icons">
-    <!-- أيقونات الدفع كما في الكود القديم -->
     <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 1"><span>طريقة 1</span></div>
-    <!-- … باقي أيقونات الدفع -->
+    <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 2"><span>طريقة 2</span></div>
+    <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 3"><span>طريقة 3</span></div>
+    <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 4"><span>طريقة 4</span></div>
+    <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 5"><span>طريقة 5</span></div>
+    <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 6"><span>طريقة 6</span></div>
+    <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 7"><span>طريقة 7</span></div>
+    <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 8"><span>طريقة 8</span></div>
+    <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 9"><span>طريقة 9</span></div>
+    <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 10"><span>طريقة 10</span></div>
   </div>
 </div>
 
@@ -141,25 +124,15 @@ body { font-family: "Tajawal", sans-serif; background:#000; color:#fff; padding:
     </div>
 </div>
 
-<!-- شريط العلامات التجارية المتحرك -->
-<div class="brand-slider">
-  <div class="brand-track">
-    <!-- استبدل الروابط بالصور الفعلية للعلامات التجارية -->
-    <img src="https://via.placeholder.com/120x60?text=Brand1" alt="Brand 1">
-    <img src="https://via.placeholder.com/120x60?text=Brand2" alt="Brand 2">
-    <img src="https://via.placeholder.com/120x60?text=Brand3" alt="Brand 3">
-    <img src="https://via.placeholder.com/120x60?text=Brand4" alt="Brand 4">
-    <img src="https://via.placeholder.com/120x60?text=Brand5" alt="Brand 5">
-    <img src="https://via.placeholder.com/120x60?text=Brand6" alt="Brand 6">
-    <!-- يمكنك تكرار الصور هنا إذا تبي الشريط يمشي بشكل سلس → مثال: نفس الصور مرة ثانية -->
-    <img src="https://via.placeholder.com/120x60?text=Brand1" alt="Brand 1">
-    <img src="https://via.placeholder.com/120x60?text=Brand2" alt="Brand 2">
-    <img src="https://via.placeholder.com/120x60?text=Brand3" alt="Brand 3">
-    <img src="https://via.placeholder.com/120x60?text=Brand4" alt="Brand 4">
-    <img src="https://via.placeholder.com/120x60?text=Brand5" alt="Brand 5">
-    <img src="https://via.placeholder.com/120x60?text=Brand6" alt="Brand 6">
-  </div>
-</div>
+<script>
+// انطواء تدريجي للبطاقات
+document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach((card, index) => {
+        setTimeout(() => { card.classList.add('show'); }, index * 300);
+    });
+});
+</script>
 
 </body>
 </html>
