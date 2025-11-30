@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KLAF - الصفحة الرئيسية</title>
 
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: "Tajawal", sans-serif; background:#000; color:#fff; padding:20px; overflow-x:hidden; }
+
+/* ===== اللوقو ===== */
+.logo-box { text-align:right; padding:10px 20px; margin-bottom:30px; }
+.logo-box img { height:75px; max-width:160px; border-radius:10px; }
+
+/* ===== صفوف البنرات / الإطارات ===== */
+.frames-row { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-bottom:30px; }
+.frame { background:#111; border-radius:15px; overflow:hidden; width:calc(20% - 16px); min-width:140px; height:120px; display:flex; align-items:center; justify-content:center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.frame:hover { transform: scale(1.05); box-shadow:0 10px 20px rgba(255,215,0,0.3); }
+.frame img { width:80%; height:80%; object-fit:contain; }
+
+/* ===== طرق الدفع ===== */
+.payment-methods { text-align:center; margin:50px 0 30px; }
+.payment-title { font-size:18px; font-weight:500; color:#aaa; margin-bottom:20px; }
+.payment-icons { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; align-items:center; }
+.payment-icon { background:#1a1a1a; padding:12px 18px; border-radius:12px; border:1px solid #333; display:flex; align-items:center; gap:8px; min-width:110px; transition: all 0.3s ease; }
+.payment-icon:hover { background:#ffd700; border-color:#ffd700; transform:translateY(-3px); box-shadow:0 8px 20px rgba(255,215,0,0.2); }
+.payment-icon img { height:28px; filter:brightness(0) invert(1); transition: filter 0.3s ease; }
+.payment-icon:hover img { filter:brightness(0); }
+.payment-icon span { font-size:14px; font-weight:600; color:#fff; }
+.payment-icon:hover span { color:#000; }
+
+/* ===== خدمات الشركة بشكل جذاب ===== */
+.services-section { max-width:1200px; margin:50px auto; padding:0 20px; text-align:center; }
+.services-title { font-size:32px; font-weight:900; color:#fff; margin-bottom:40px; }
+.services-cards { display:flex; flex-wrap:wrap; gap:25px; justify-content:center; }
+.service-card {
+    background: #111;
+    border-radius:18px;
+    padding:25px 20px;
+    flex:0 1 300px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    border:1px solid #333;
+    opacity:0;
+    transform:translateY(50px);
+    transition: all 0.5s ease, transform 0.3s ease;
+}
+.service-card.show { opacity:1; transform:translateY(0); }
+.service-card:hover { transform:translateY(-10px) scale(1.03); box-shadow:0 15px 30px rgba(255,215,0,0.3); border-color:#ffd700; }
+.service-icon { background:#1a1a1a; padding:20px; border-radius:50%; margin-bottom:15px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.service-card:hover .service-icon { transform:scale(1.2); box-shadow:0 10px 20px rgba(255,215,0,0.4); }
+.service-icon img { width:60px; height:60px; filter:brightness(0) invert(1); transition:filter 0.3s ease; }
+.service-card:hover .service-icon img { filter:brightness(1); }
+.service-text h3 { font-size:20px; font-weight:800; margin-bottom:10px; color:#fff; }
+.service-text p { font-size:14px; color:#ccc; line-height:1.5; }
+
+/* ===== شريط العلامات التجارية المتحرك ===== */
+.brand-slider {
+  width: 100%;
+  overflow: hidden;
+  background: #111;
+  padding: 15px 0;
+  margin-top: 40px;
+  border-top: 1px solid #333;
+}
+.brand-track {
+  display: flex;
+  gap: 40px;
+  animation: scrollBrands 20s linear infinite;
+}
+.brand-track img {
+  height: 50px;
+  filter: brightness(0.85);
+  transition: 0.3s ease;
+}
+.brand-track img:hover {
+  filter: brightness(1);
+  transform: scale(1.1);
+}
+@keyframes scrollBrands {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* تحسين التجاوب */
+@media(max-width:992px) { .service-card { flex:0 1 45%; } .frame { width:calc(25% - 15px); height:100px; } }
+@media(max-width:768px) { .service-card { flex:0 1 100%; } .frame { width:calc(33.33% - 12px); height:90px; } }
+@media(max-width:480px) { .frame { width:calc(50% - 10px); height:80px; } }
+</style>
+</head>
+<body>
+
+<!-- اللوقو -->
+<div class="logo-box">
+  <img src="https://raw.githubusercontent.com/KH515/KLAF/main/Image/logo.png.png" alt="KLAF Logo">
+</div>
+
+<!-- صف صور متعدد -->
+<div class="frames-row">
+  <div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 1"></div>
+  <div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 2"></div>
+  <div aslass="frame"><img src="https://via.placeholder.com/150" alt="صورة 3"></div>
+  <div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 4"></div>
+  <div class="frame"><img src="https://via.placeholder.com/150" alt="صورة 5"></div>
+</div>
+
+<!-- (بقية البنرات / الصور كما عندك) -->
+
+<!-- طرق الدفع -->
+<div class="payment-methods">
+  <div class="payment-title">طرق الدفع المتاحة</div>
+  <div class="payment-icons">
+    <!-- أيقونات الدفع كما في الكود القديم -->
+    <div class="payment-icon"><img src="https://via.placeholder.com/50" alt="طريقة 1"><span>طريقة 1</span></div>
+    <!-- … باقي أيقونات الدفع -->
+  </div>
+</div>
+
+<!-- خدمات الشركة -->
+<div class="services-section">
+    <h2 class="services-title">خدماتنا</h2>
+    <div class="services-cards">
+        <div class="service-card">
+            <div class="service-icon"><img src="https://img.icons8.com/ios-filled/100/ffffff/policy.png" alt="سياساتنا"></div>
+            <div class="service-text"><h3>سياساتنا</h3><p>تعرف على سياسات كلاف وشروط الاستخدام بطريقة سهلة وواضحة.</p></div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><img src="https://img.icons8.com/ios-filled/100/ffffff/invoice.png" alt="استعلام عن الفواتير"></div>
+            <div class="service-text"><h3>استعلام عن الفواتير</h3><p>ادخل رقم فاتورتك لتظهر لك التفاصيل مباشرة وبسهولة.</p></div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon"><img src="https://img.icons8.com/ios-filled/100/ffffff/question-mark.png" alt="الأسئلة الشائعة"></div>
+            <div class="service-text"><h3>الأسئلة الشائعة</h3><p>إجابات لأكثر الأسئلة المتكررة من عملائنا بطريقة واضحة وسهلة.</p></div>
+        </div>
+    </div>
+</div>
+
+<!-- شريط العلامات التجارية المتحرك -->
+<div class="brand-slider">
+  <div class="brand-track">
+    <!-- استبدل الروابط بالصور الفعلية للعلامات التجارية -->
+    <img src="https://via.placeholder.com/120x60?text=Brand1" alt="Brand 1">
+    <img src="https://via.placeholder.com/120x60?text=Brand2" alt="Brand 2">
+    <img src="https://via.placeholder.com/120x60?text=Brand3" alt="Brand 3">
+    <img src="https://via.placeholder.com/120x60?text=Brand4" alt="Brand 4">
+    <img src="https://via.placeholder.com/120x60?text=Brand5" alt="Brand 5">
+    <img src="https://via.placeholder.com/120x60?text=Brand6" alt="Brand 6">
+    <!-- يمكنك تكرار الصور هنا إذا تبي الشريط يمشي بشكل سلس → مثال: نفس الصور مرة ثانية -->
+    <img src="https://via.placeholder.com/120x60?text=Brand1" alt="Brand 1">
+    <img src="https://via.placeholder.com/120x60?text=Brand2" alt="Brand 2">
+    <img src="https://via.placeholder.com/120x60?text=Brand3" alt="Brand 3">
+    <img src="https://via.placeholder.com/120x60?text=Brand4" alt="Brand 4">
+    <img src="https://via.placeholder.com/120x60?text=Brand5" alt="Brand 5">
+    <img src="https://via.placeholder.com/120x60?text=Brand6" alt="Brand 6">
+  </div>
+</div>
+
+</body>
+</html>
