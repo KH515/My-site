@@ -1,199 +1,95 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>سياسة الخصوصية — KlafStore</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>سياساتنا — KlafStore</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --brand: #FF835E;      /* لون الأيقونات */
-  --bg: #000000;         /* خلفية سوداء */
-  --text: #FFFFFF;       /* نص أبيض */
-  --text-light: #CCCCCC; /* نص خفيف */
-  --card: #111111;       /* خلفية الإطار */
-  --radius: 12px;
-  --maxwidth: 900px;
-}
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:"Tajawal",sans-serif; background:#000; color:#fff; padding:25px; display:flex; flex-direction:column; min-height:100vh; }
 
-* { box-sizing: border-box; margin:0; padding:0; }
+    /* ===== الهيدر - اللوغو حجم ومكان مثل الصفحة الرئيسية ===== */
+    .klaf-header {
+      width: 100%;
+      text-align:right;
+      padding:10px 20px;
+      margin-bottom:30px;
+    }
+    .klaf-header img {
+      height:75px;
+      max-width:160px;
+      border-radius:10px;
+      object-fit:contain;
+    }
 
-body {
-  font-family: "Tajawal", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  padding: 25px;
-  line-height: 1.8;
-}
+    /* ===== الحاوية ===== */
+    .container { max-width:980px; margin:0 auto; background:#111; border-radius:12px; padding:30px; flex:1; }
 
-.container {
-  max-width: var(--maxwidth);
-  margin: auto;
-  padding: 25px;
-}
+    header{ display:flex; gap:16px; align-items:center; margin-bottom:30px; }
+    .icon-box{ width:70px; height:70px; border-radius:12px; background:#FF835E; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .icon-box svg{ width:40px; height:40px; fill:#fff; }
+    h1{ margin:0; font-size:28px; font-weight:700; color:#ffffff; }
+    .lead{ margin:6px 0 0; color:#bbbbbb; font-weight:300; font-size:15px; }
 
-header h1 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
+    .layout{ display:grid; grid-template-columns:280px 1fr; gap:20px; margin-top:25px; }
+    @media(max-width:880px){ .layout{grid-template-columns:1fr} }
 
-header p {
-  font-weight: 300;
-  color: var(--text-light);
-  margin-bottom: 25px;
-}
+    nav.toc{ background:#111; padding:16px; border-radius:12px; border:1px solid #222; position:sticky; top:20px; }
+    nav.toc h3{ margin:0 0 12px; font-weight:700; font-size:16px; color:#ffffff; }
+    nav.toc ul{ padding:0; margin:0; list-style:none; display:flex; flex-direction:column; gap:12px; }
+    nav.toc a{ text-decoration:none; color:#fff; background:#000; padding:10px 12px; border-radius:8px; border:1px solid #333; display:flex; align-items:center; gap:10px; font-size:14px; transition:0.2s; }
+    nav.toc a:hover{ color:#FF835E; border-color:#FF835E; }
+    nav.toc svg{ width:18px; height:18px; fill:#FF835E; }
 
-.policy-section {
-  background: var(--card);
-  padding: 20px;
-  border-radius: var(--radius);
-  margin-bottom: 20px;
-  border: 1px solid #222;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.7s ease;
-}
-
-.policy-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.policy-section h2 {
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.policy-section h2 svg {
-  width: 22px;
-  height: 22px;
-  fill: var(--brand);
-  transition: transform 0.3s ease;
-}
-
-.policy-section.visible h2 svg {
-  transform: scale(1.2);
-}
-
-.policy-section p {
-  font-weight: 300;
-  color: var(--text-light);
-  margin-bottom: 10px;
-}
-
-.policy-section ul, .policy-section ol {
-  padding-inline-start: 20px;
-  margin-top: 10px;
-}
-
-.policy-section ul li, .policy-section ol li {
-  font-weight: 700; /* عريض للنقاط */
-  margin-bottom: 6px;
-  color: var(--text);
-}
-
-footer {
-  text-align: center;
-  margin-top: 25px;
-  font-size: 13px;
-  color: var(--text-light);
-}
-</style>
+    footer{ text-align:center; padding:20px 0; font-size:14px; color:#bbbbbb; margin-top:30px; }
+  </style>
 </head>
+
 <body>
+
+<!-- الهيدر -->
+<div class="klaf-header">
+  <img src="https://raw.githubusercontent.com/KH515/KLAF/main/Image/logo.png" alt="Klaf Logo">
+</div>
 
 <main class="container">
 
+  <!-- HEADER داخل الصفحة -->
   <header>
-    <h1>سياسة الخصوصية</h1>
-    <p>نحن في متجر كلاف نحترم خصوصيتك ونلتزم بحماية معلوماتك الشخصية، ونوضح لك كيفية جمعها واستخدامها.</p>
+    <div class="icon-box">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 1.5l8 4v6c0 5.25-3.5 10.25-8 11-4.5-.75-8-5.75-8-11v-6l8-4z"/>
+      </svg>
+    </div>
+    <div>
+      <h1>سياساتنا</h1>
+      <p class="lead">مرحبًا بك — اختر السياسة لعرض التفاصيل في صفحة مستقلة.</p>
+    </div>
   </header>
 
-  <section class="policy-section">
-    <h2>
-      <svg viewBox="0 0 24 24"><path d="M12 1.5l8 4v6c0 5.25-3.5 10.25-8 11-4.5-.75-8-5.75-8-11v-6l8-4z"/></svg>
-      جمع البيانات
-    </h2>
-    <p>عند استخدامك لموقعنا، قد نقوم بجمع بعض البيانات الأساسية مثل:</p>
-    <ul>
-      <li>الاسم الكامل</li>
-      <li>البريد الإلكتروني</li>
-      <li>رقم الهاتف</li>
-      <li>عنوان الشحن</li>
-    </ul>
-  </section>
-
-  <section class="policy-section">
-    <h2>
-      <svg viewBox="0 0 24 24"><path d="M4 3h16v2H4z"/></svg>
-      استخدام البيانات
-    </h2>
-    <p>نستخدم البيانات لأغراض محددة تشمل:</p>
-    <ul>
-      <li>معالجة الطلبات والشحن والتواصل مع العملاء</li>
-      <li>تحسين تجربة التسوق وتقديم خدمات مخصصة</li>
-      <li>حماية الموقع ومنع الأنشطة الاحتيالية</li>
-    </ul>
-  </section>
-
-  <section class="policy-section">
-    <h2>
-      <svg viewBox="0 0 24 24"><path d="M12 2l4 4H8z"/></svg>
-      حماية البيانات
-    </h2>
-    <p>نستخدم معايير أمنية حديثة لتخزين البيانات ومنع الوصول غير المصرح به. لا نشارك بياناتك مع أي طرف ثالث إلا عند الضرورة لتنفيذ طلبك.</p>
-  </section>
-
-  <section class="policy-section">
-    <h2>
-      <svg viewBox="0 0 24 24"><path d="M2 6h20v12H2z"/></svg>
-      حقوق المستخدم
-    </h2>
-    <ul>
-      <li>يمكنك طلب نسخة من بياناتك في أي وقت</li>
-      <li>يمكنك طلب حذف بياناتك من خلال التواصل معنا عبر صفحة الاتصال</li>
-    </ul>
-  </section>
-
-  <section class="policy-section">
-    <h2>
-      <svg viewBox="0 0 24 24"><path d="M3 3h13v13H3z"/></svg>
-      طرق الدفع والتخزين
-    </h2>
-    <ul>
-      <li>لا نخزن بيانات بطاقتك الائتمانية على خوادمنا</li>
-      <li>نعتمد على بوابات دفع آمنة ومشفرة لضمان الأمان الكامل</li>
-    </ul>
-  </section>
-
-  <footer>
-    © 2025 KlafStore
-  </footer>
+  <!-- TOC -->
+  <div class="layout">
+    <nav class="toc">
+      <h3>فهرس السياسات</h3>
+      <ul>
+        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+        <li><a href="terms.html">الشروط والأحكام</a></li>
+        <li><a href="shipping.html">سياسة الشحن</a></li>
+        <li><a href="returns.html">سياسة الاسترجاع والإلغاء</a></li>
+        <li><a href="payment.html">طرق الدفع</a></li>
+      </ul>
+    </nav>
+  </div>
 
 </main>
 
-<script>
-// تفعيل ظهور الأقسام عند التمرير
-const sections = document.querySelectorAll('.policy-section');
-function checkVisibility() {
-  const triggerBottom = window.innerHeight * 0.85;
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-    if(sectionTop < triggerBottom){
-      section.classList.add('visible');
-    }
-  });
-}
-window.addEventListener('scroll', checkVisibility);
-window.addEventListener('load', checkVisibility);
-</script>
+<!-- الفوتر -->
+<footer>
+  جميع الحقوق محفوظة | 2025 كلاف
+</footer>
 
 </body>
 </html>
