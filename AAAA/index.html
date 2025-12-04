@@ -1,152 +1,108 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>إطار بنر - KLAF</title>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+<div class="klaf-card">
+    <div class="device-wrapper">
+
+        <!-- الصورة الكبيرة -->
+        <img class="main-img" 
+        src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=1200" alt="">
+
+        <!-- الصور الصغيرة -->
+        <img class="small-img img-1" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800" alt="">
+        <img class="small-img img-2" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800" alt="">
+        <img class="small-img img-3" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800" alt="">
+    </div>
+
+    <div class="text-box">
+        <h2>شاهد بجهازين في نفس الوقت</h2>
+        <p>تجربة مشاهدة سلسة على أي جهاز تختاره</p>
+    </div>
+</div>
+
+<!-- إضافة الخط -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --bg:#040504;
-    --card:#0d0f0f;
-    --inner:#0f1111;
-    --white:#ffffff;
-    --muted:#bfbfbf;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:var(--bg);
-    font-family:"Tajawal",sans-serif;
-    padding:30px;
-  }
+body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    font-family: "Tajawal", sans-serif;
+}
 
-  .frame {
-    width: 920px;
-    max-width:95%;
-    background: linear-gradient(180deg,#070807 0%, #0b0c0c 100%);
-    border-radius:40px;
-    padding:34px;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
-    display:flex;
-    flex-direction:column;
-    gap:28px;
-  }
+.klaf-card {
+    width: 90%;
+    max-width: 700px;
+    background: #0b0b0b;
+    border-radius: 30px;
+    padding: 40px 30px;
+    box-shadow: 0 0 80px rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.04);
+    transition: transform 0.3s ease;
+}
+.klaf-card:hover { transform: translateY(-6px); }
 
-  .display-wrap{
-    position:relative;
-    background:var(--card);
-    border-radius:18px;
-    padding:24px;
-  }
+.device-wrapper {
+    position: relative;
+    margin-bottom: 30px; /* قربنا النص */
+}
 
-  .screen {
-    width:100%;
-    border-radius:12px;
-    overflow:hidden;
-    background:#0a0b0b;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.6), inset 0 2px 0 rgba(255,255,255,0.02);
-    height:420px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
+.main-img {
+    width: 100%;
+    border-radius: 20px;
+    display: block;
+    box-shadow: 0 0 50px rgba(0,255,180,0.10);
+}
 
-  .screen img {
-    width:94%;
-    height:90%;
-    object-fit:cover;
-    border-radius:10px;
-  }
+.small-img {
+    position: absolute;
+    width: 32%;
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.35);
+    opacity: 0.95;
+    transition: transform 3s ease; /* حركة بطيئة جدًا */
+}
 
-  .mini-device {
-    position:absolute;
-    right:36px;
-    bottom:12px;
-    width:240px;
-    height:110px;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-    border: 3px solid rgba(255,255,255,0.03);
-    background:#0b0c0c;
-  }
-  .mini-device img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-  }
+/* ترتيب وزوايا + الميل */
+.img-1 { bottom: -35px; right: 10px; transform: rotate(-3deg); } /* يمين */
+.img-2 { bottom: -15px; right: 36%; transform: rotate(2deg); }  /* يسار */
+.img-3 { bottom: -35px; left: 10px; transform: rotate(-1deg); }  /* يمين */
 
-  .device-icon {
-    position:absolute;
-    left:20px;
-    bottom:18px;
-    width:36px; height:36px;
-    opacity:0.85;
-    border-radius:6px;
-    border:1px solid rgba(255,255,255,0.03);
-  }
+.text-box {
+    text-align: center;
+    margin-top: 20px; /* قربنا النص من الصور */
+    font-family: "Tajawal", sans-serif; /* الخط */
+}
 
-  .frame-title {
-    text-align:left;
-    direction: rtl;
-  }
-  .frame-title h1{
-    margin:0;
-    font-size:40px;
-    color:var(--white);
-    font-weight:900;
-    line-height:1.05;
-  }
-  .frame-title p{
-    margin:8px 0 0;
-    color:var(--muted);
-    font-size:16px;
-    font-weight:300;
-  }
+.text-box h2 {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 900; /* عريض جدًا */
+    margin-bottom: 8px;
+}
 
-  @media (max-width:900px){
-    .screen{ height:300px }
-    .mini-device{ width:190px; height:92px; right:20px; bottom:8px; }
-    .frame{ padding:22px }
-    .frame-title h1{ font-size:32px }
-  }
-  @media (max-width:480px){
-    .screen{ height:220px }
-    .mini-device{ display:none }
-    .frame{ padding:16px }
-    .frame-title h1{ font-size:22px }
-    .frame-title p{ font-size:14px }
-  }
+.text-box p {
+    color: #ccc;
+    font-size: 16px;
+    font-weight: 300; /* نحيف */
+    margin-top: 0;
+}
 </style>
-</head>
-<body>
 
-  <div class="frame">
-    <div class="display-wrap">
-      <div class="screen">
-        <img src="https://images.pexels.com/photos/260409/pexels-photo-260409.jpeg" alt="">
-      </div>
+<script>
+const imgs = document.querySelectorAll('.small-img');
 
-      <div class="mini-device">
-        <img src="https://images.pexels.com/photos/260409/pexels-photo-260409.jpeg" alt="">
-      </div>
+setInterval(() => {
+    imgs.forEach(img => {
+        // حركة بطيئة حول موقعها الأصلي
+        const x = (Math.random() * 10 - 5); // -5px إلى +5px
+        const y = (Math.random() * 10 - 5); 
+        // نحافظ على الميل الأصلي لكل صورة
+        let rotate = 0;
+        if (img.classList.contains('img-1')) rotate = -3;
+        else if (img.classList.contains('img-2')) rotate = 2;
+        else if (img.classList.contains('img-3')) rotate = -1;
 
-      <svg class="device-icon" viewBox="0 0 24 24" fill="none">
-        <rect x="2" y="4" width="14" height="16" rx="2" stroke="rgba(255,255,255,0.6)"></rect>
-        <rect x="18" y="7" width="4" height="10" rx="1" stroke="rgba(255,255,255,0.6)"></rect>
-      </svg>
-    </div>
-
-    <div class="frame-title">
-      <h1>شاهد بجهازين في نفس الوقت</h1>
-      <p>جودة عالية، تجربة سلسة، وتصميم أنيق يناسب أي محتوى.</p>
-    </div>
-  </div>
-
-</body>
-</html>
+        img.style.transform = `rotate(${rotate}deg) translate(${x}px, ${y}px)`;
+    });
+}, 3000); // كل 3 ثواني
+</script>
