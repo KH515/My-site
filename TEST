@@ -1,1 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>بنر متحرك Fade</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+
+  .slider {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 300px; /* أقل ارتفاع ليصبح مستطيل أكثر */
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 15px; /* حواف أكثر نعومة */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
+
+  /* النقاط أسفل البنر */
+  .dots {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+  }
+
+  .dot {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 0 6px;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid #fff;
+  }
+
+  .dot.active {
+    background-color: #ff6600; /* لون مميز للنقطة النشطة */
+    transform: scale(1.3);
+    opacity: 1;
+  }
+
+  /* متجاوب */
+  @media (max-width: 768px) {
+    .slider { height: 220px; }
+  }
+
+  @media (max-width: 480px) {
+    .slider { height: 160px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slider">
+  <div class="slide active">
+    <img src="https://via.placeholder.com/1200x400?text=صورة+1" alt="صورة 1">
+  </div>
+  <div class="slide">
+    <img src="https://via.placeholder.com/1200x400?text=صورة+2" alt="صورة 2">
+  </div>
+  <div class="slide">
+    <img src="https://via.placeholder.com/1200x400?text=صورة+3" alt="صورة 3">
+  </div>
+
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  let index = 0;
+
+  function showSlide(i) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    slides[i].classList.add('active');
+    dots[i].classList.add('active');
+  }
+
+  function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+  }
+
+  setInterval(nextSlide, 5000); // تغيير كل 5 ثواني
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      index = i;
+      showSlide(index);
+    });
+  });
+</script>
+
+</body>
+</html>
