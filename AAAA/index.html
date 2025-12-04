@@ -1,9 +1,7 @@
 <div class="klaf-card">
     <div class="device-wrapper">
-
         <!-- الصورة الكبيرة -->
-        <img class="main-img" 
-        src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=1200" alt="">
+        <img class="main-img" src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=1200" alt="">
 
         <!-- الصور الصغيرة -->
         <img class="small-img img-1" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800" alt="">
@@ -59,9 +57,10 @@ body {
     border-radius: 16px;
     box-shadow: 0 0 25px rgba(0,0,0,0.35);
     opacity: 0.95;
-    transition: transform 3s ease;
+    transition: transform 2s ease; /* حركة أسرع وأكثر وضوحًا */
 }
 
+/* ترتيب وزوايا + الميل */
 .img-1 { bottom: -35px; right: 10px; transform: rotate(-3deg); }
 .img-2 { bottom: -15px; right: 36%; transform: rotate(2deg); }
 .img-3 { bottom: -35px; left: 10px; transform: rotate(-1deg); }
@@ -76,16 +75,16 @@ body {
 }
 
 .text-box h2 {
-    color: rgba(255,255,255,0.95); /* شبه شفاف */
-    font-size: 36px; /* أكبر */
+    color: rgba(255,255,255,0.95);
+    font-size: 46px; /* كبير جدًا */
     font-weight: 900;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .text-box p {
-    color: rgba(255,255,255,0.7); /* شبه شفاف */
-    font-size: 20px; /* أكبر من قبل */
-    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    font-size: 24px; /* أكبر */
+    font-weight: 400;
     margin-top: 0;
 }
 </style>
@@ -95,13 +94,14 @@ const imgs = document.querySelectorAll('.small-img');
 
 setInterval(() => {
     imgs.forEach(img => {
-        const x = (Math.random() * 10 - 5);
-        const y = (Math.random() * 10 - 5);
+        // حركة أكبر وواضحة
+        const x = (Math.random() * 20 - 10); // تحريك أكبر من قبل
+        const y = (Math.random() * 20 - 10);
         let rotate = 0;
         if (img.classList.contains('img-1')) rotate = -3;
         else if (img.classList.contains('img-2')) rotate = 2;
         else if (img.classList.contains('img-3')) rotate = -1;
         img.style.transform = `rotate(${rotate}deg) translate(${x}px, ${y}px)`;
     });
-}, 3000);
+}, 2000); // كل ثانيتين الحركة واضحة
 </script>
