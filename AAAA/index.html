@@ -17,7 +17,6 @@
     </div>
 </div>
 
-<!-- إضافة الخط -->
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
@@ -38,12 +37,13 @@ body {
     box-shadow: 0 0 80px rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.04);
     transition: transform 0.3s ease;
+    position: relative;
 }
 .klaf-card:hover { transform: translateY(-6px); }
 
 .device-wrapper {
     position: relative;
-    margin-bottom: 30px; /* قربنا النص */
+    margin-bottom: 30px;
 }
 
 .main-img {
@@ -59,31 +59,33 @@ body {
     border-radius: 16px;
     box-shadow: 0 0 25px rgba(0,0,0,0.35);
     opacity: 0.95;
-    transition: transform 3s ease; /* حركة بطيئة جدًا */
+    transition: transform 3s ease;
 }
 
-/* ترتيب وزوايا + الميل */
-.img-1 { bottom: -35px; right: 10px; transform: rotate(-3deg); } /* يمين */
-.img-2 { bottom: -15px; right: 36%; transform: rotate(2deg); }  /* يسار */
-.img-3 { bottom: -35px; left: 10px; transform: rotate(-1deg); }  /* يمين */
+.img-1 { bottom: -35px; right: 10px; transform: rotate(-3deg); }
+.img-2 { bottom: -15px; right: 36%; transform: rotate(2deg); }
+.img-3 { bottom: -35px; left: 10px; transform: rotate(-1deg); }
 
+/* النص */
 .text-box {
+    position: relative;
     text-align: center;
-    margin-top: 20px; /* قربنا النص من الصور */
-    font-family: "Tajawal", sans-serif; /* الخط */
+    margin-top: 20px;
+    font-family: "Tajawal", sans-serif;
+    z-index: 2;
 }
 
 .text-box h2 {
-    color: #fff;
-    font-size: 26px;
-    font-weight: 900; /* عريض جدًا */
+    color: rgba(255,255,255,0.95); /* شبه شفاف */
+    font-size: 36px; /* أكبر */
+    font-weight: 900;
     margin-bottom: 8px;
 }
 
 .text-box p {
-    color: #ccc;
-    font-size: 16px;
-    font-weight: 300; /* نحيف */
+    color: rgba(255,255,255,0.7); /* شبه شفاف */
+    font-size: 20px; /* أكبر من قبل */
+    font-weight: 300;
     margin-top: 0;
 }
 </style>
@@ -93,16 +95,13 @@ const imgs = document.querySelectorAll('.small-img');
 
 setInterval(() => {
     imgs.forEach(img => {
-        // حركة بطيئة حول موقعها الأصلي
-        const x = (Math.random() * 10 - 5); // -5px إلى +5px
-        const y = (Math.random() * 10 - 5); 
-        // نحافظ على الميل الأصلي لكل صورة
+        const x = (Math.random() * 10 - 5);
+        const y = (Math.random() * 10 - 5);
         let rotate = 0;
         if (img.classList.contains('img-1')) rotate = -3;
         else if (img.classList.contains('img-2')) rotate = 2;
         else if (img.classList.contains('img-3')) rotate = -1;
-
         img.style.transform = `rotate(${rotate}deg) translate(${x}px, ${y}px)`;
     });
-}, 3000); // كل 3 ثواني
+}, 3000);
 </script>
