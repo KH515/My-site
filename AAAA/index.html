@@ -18,37 +18,54 @@ body {
 /* السلايدر */
 .slider-container {
     position: relative;
-    overflow: hidden;
     max-width: 100%;
     margin: auto;
 }
 
+/* المسار */
 .slider-track {
     display: flex;
     gap: 25px;
+    padding-bottom: 20px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding-bottom: 20px;
 }
 
+/* إخفاء سكرول */
 .slider-track::-webkit-scrollbar {
     display: none;
 }
 
+/* بطاقات الجوال — تحت بعض */
+@media (max-width: 819px) {
+    .slider-track {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .klaf-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: unset !important;
+    }
+}
+
 /* البطاقة */
 .klaf-card {
-    flex: 0 0 90%;
-    max-width: 90%;
     background: #0b0b0b;
     border-radius: 30px;
     padding: 35px 25px;
+    margin-bottom: 25px;
     box-shadow: 0 0 80px rgba(255,255,255,0.05);
     border: 1px solid rgba(255,255,255,0.05);
     position: relative;
 }
 
 /* الصور */
-.device-wrapper { position: relative; margin-bottom: 40px; }
+.device-wrapper {
+    position: relative;
+    margin-bottom: 40px;
+}
 
 .main-img {
     width: 100%;
@@ -72,15 +89,15 @@ body {
 .text-box { text-align: center; }
 .text-box h2 {
     color: #fff;
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 900;
 }
 .text-box p {
     color: rgba(255,255,255,0.8);
-    font-size: 18px;
+    font-size: 17px;
 }
 
-/* أزرار السلايدر */
+/* أزرار */
 .slider-btn {
     display: none;
     position: absolute;
@@ -101,17 +118,32 @@ body {
 .btn-left { left: 10px; }
 .btn-right { right: 10px; }
 
-/* يظهرون فقط على اللابتوب */
+/* وضع اللابتوب */
 @media (min-width: 820px) {
-    .slider-btn { display: flex; align-items:center; justify-content:center; }
-    .klaf-card { flex: 0 0 32%; max-width: 32%; }
+
+    .slider-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .slider-track {
+        flex-direction: row;
+        overflow-x: hidden;
+    }
+
+    .klaf-card {
+        flex: 0 0 32%;
+        max-width: 32%;
+        margin-bottom: 0;
+    }
 }
 </style>
 </head>
 <body>
 
 <div class="slider-container">
-    
+
     <!-- أزرار -->
     <button class="slider-btn btn-left">❮</button>
     <button class="slider-btn btn-right">❯</button>
