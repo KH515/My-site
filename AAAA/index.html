@@ -3,129 +3,215 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KLAF Card Demo</title>
+<title>KLAF Slider</title>
 
-<!-- خطوط عربية -->
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 body {
     background: #000;
-    display: flex;
-    justify-content: center;
-    padding: 40px;
+    padding: 30px 10px;
     font-family: "Tajawal", sans-serif;
     margin: 0;
 }
 
+/* السلايدر */
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    margin: auto;
+}
+
+.slider-track {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 20px;
+}
+
+.slider-track::-webkit-scrollbar {
+    display: none;
+}
+
 /* البطاقة */
 .klaf-card {
-    width: 90%;
-    max-width: 700px;
+    flex: 0 0 90%;
+    max-width: 90%;
     background: #0b0b0b;
     border-radius: 30px;
-    padding: 40px 30px;
-    box-shadow: 0 0 80px rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.04);
-    transition: transform 0.3s ease;
+    padding: 35px 25px;
+    box-shadow: 0 0 80px rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.05);
     position: relative;
 }
-.klaf-card:hover { transform: translateY(-6px); }
 
 /* الصور */
-.device-wrapper {
-    position: relative;
-    margin-bottom: 30px;
-}
+.device-wrapper { position: relative; margin-bottom: 40px; }
 
 .main-img {
     width: 100%;
-    border-radius: 20px;
-    display: block;
+    border-radius: 22px;
     box-shadow: 0 0 50px rgba(0,255,180,0.10);
 }
 
 .small-img {
     position: absolute;
-    width: 32%;
+    width: 30%;
     border-radius: 16px;
     box-shadow: 0 0 25px rgba(0,0,0,0.35);
-    opacity: 0.95;
     transition: transform 2s ease;
 }
 
-/* ترتيب وزوايا + الميل */
-.img-1 { bottom: -35px; right: 10px; transform: rotate(-3deg); }
-.img-2 { bottom: -15px; right: 36%; transform: rotate(2deg); }
-.img-3 { bottom: -35px; left: 10px; transform: rotate(-1deg); }
+.img-1 { bottom: -40px; right: 5px; transform: rotate(-3deg); }
+.img-2 { bottom: -20px; right: 34%; transform: rotate(2deg); }
+.img-3 { bottom: -40px; left: 5px; transform: rotate(-1deg); }
 
 /* النص */
-.text-box {
-    position: relative;
-    text-align: center;
-    margin-top: 20px;
-    z-index: 2;
-}
-
+.text-box { text-align: center; }
 .text-box h2 {
-    color: #FFFFFF; /* أبيض */
-    font-size: 40px; /* أساسي للجوال */
-    font-weight: 900; /* عريض جدًا */
-    margin-bottom: 12px;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.4); /* تأثير جميل */
+    color: #fff;
+    font-size: 36px;
+    font-weight: 900;
 }
-
 .text-box p {
     color: rgba(255,255,255,0.8);
     font-size: 18px;
-    font-weight: 400;
-    margin-top: 0;
 }
 
-/* متجاوب */
-@media screen and (min-width: 390px) {
-    .text-box h2 {
-        font-size: 47px; /* أكبر على اللابتوب */
-    }
-    .text-box p {
-        font-size: 24px; /* أكبر على اللابتوب */
-    }
+/* أزرار السلايدر */
+.slider-btn {
+    display: none;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
+    border: none;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.btn-left { left: 10px; }
+.btn-right { right: 10px; }
+
+/* يظهرون فقط على اللابتوب */
+@media (min-width: 820px) {
+    .slider-btn { display: flex; align-items:center; justify-content:center; }
+    .klaf-card { flex: 0 0 32%; max-width: 32%; }
 }
 </style>
 </head>
 <body>
 
-<div class="klaf-card">
-    <div class="device-wrapper">
-        <!-- الصورة الكبيرة -->
-        <img class="main-img" src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=1200" alt="">
+<div class="slider-container">
+    
+    <!-- أزرار -->
+    <button class="slider-btn btn-left">❮</button>
+    <button class="slider-btn btn-right">❯</button>
 
-        <!-- الصور الصغيرة -->
-        <img class="small-img img-1" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800" alt="">
-        <img class="small-img img-2" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800" alt="">
-        <img class="small-img img-3" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800" alt="">
-    </div>
+    <div class="slider-track">
 
-    <div class="text-box">
-        <h2>وين ماتروح كلاف معك </h2>
-        <p>تجربة مشاهدة سلسة على أي جهاز تختاره</p>
+        <!-- بطاقة 1 -->
+        <div class="klaf-card">
+            <div class="device-wrapper">
+                <img class="main-img" src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=1200">
+                <img class="small-img img-1" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800">
+                <img class="small-img img-2" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800">
+                <img class="small-img img-3" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800">
+            </div>
+            <div class="text-box">
+                <h2>كلاف معك دائمًا</h2>
+                <p>جودة أعلى - إحساس أفضل</p>
+            </div>
+        </div>
+
+        <!-- بطاقة 2 -->
+        <div class="klaf-card">
+            <div class="device-wrapper">
+                <img class="main-img" src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200">
+                <img class="small-img img-1" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800">
+                <img class="small-img img-2" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800">
+                <img class="small-img img-3" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800">
+            </div>
+            <div class="text-box">
+                <h2>التجربة أقوى</h2>
+                <p>كل زاوية لها قصة</p>
+            </div>
+        </div>
+
+        <!-- بطاقة 3 -->
+        <div class="klaf-card">
+            <div class="device-wrapper">
+                <img class="main-img" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200">
+                <img class="small-img img-1" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800">
+                <img class="small-img img-2" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800">
+                <img class="small-img img-3" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800">
+            </div>
+            <div class="text-box">
+                <h2>صور أجمل</h2>
+                <p>والتفاصيل أوضح</p>
+            </div>
+        </div>
+
+        <!-- بطاقة 4 -->
+        <div class="klaf-card">
+            <div class="device-wrapper">
+                <img class="main-img" src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=1200">
+                <img class="small-img img-1" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800">
+                <img class="small-img img-2" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800">
+                <img class="small-img img-3" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800">
+            </div>
+            <div class="text-box">
+                <h2>اختلاف كلاف</h2>
+                <p>تصميم مختلف تمامًا</p>
+            </div>
+        </div>
+
+        <!-- بطاقة 5 -->
+        <div class="klaf-card">
+            <div class="device-wrapper">
+                <img class="main-img" src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=1200">
+                <img class="small-img img-1" src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=800">
+                <img class="small-img img-2" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800">
+                <img class="small-img img-3" src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800">
+            </div>
+            <div class="text-box">
+                <h2>تجربة فاخرة</h2>
+                <p>ستايل يليق بك</p>
+            </div>
+        </div>
+
     </div>
 </div>
 
 <script>
+/* حركة الصور الصغيرة */
 const imgs = document.querySelectorAll('.small-img');
-
 setInterval(() => {
     imgs.forEach(img => {
-        const x = (Math.random() * 20 - 10);
-        const y = (Math.random() * 20 - 10);
-        let rotate = 0;
+        const x = Math.random() * 20 - 10;
+        const y = Math.random() * 20 - 10;
+
+        let rotate = -2;
         if (img.classList.contains('img-1')) rotate = -3;
-        else if (img.classList.contains('img-2')) rotate = 2;
-        else if (img.classList.contains('img-3')) rotate = -1;
+        if (img.classList.contains('img-2')) rotate = 2;
+        if (img.classList.contains('img-3')) rotate = -1;
+
         img.style.transform = `rotate(${rotate}deg) translate(${x}px, ${y}px)`;
     });
 }, 2000);
+
+/* أزرار السلايدر */
+const track = document.querySelector(".slider-track");
+document.querySelector(".btn-right").onclick = () => track.scrollLeft += 350;
+document.querySelector(".btn-left").onclick = () => track.scrollLeft -= 350;
 </script>
 
 </body>
