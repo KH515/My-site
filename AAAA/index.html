@@ -3,16 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KLAF Slider</title>
 
+<title>MORE</title>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/KH515/KLAF/main/Image/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
-body {
-    background: #000; /* ← خلفية سوداء */
-    padding: 20px 10px;
-    font-family: "Tajawal", sans-serif;
+/* ضبط الصفحة بالكامل */
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* يمنع تحريك الصفحة يمين ويسار */
     margin: 0;
+    padding: 0;
+    background: #000;
+    font-family: "Tajawal", sans-serif;
+}
+
+/* هيدر اللوقو يسار */
+.klaf-header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* اللوقو على اليسار */
+    padding: 10px 20px;
+    background: transparent;
+}
+
+.klaf-header img {
+    width: 60px;
+    max-width: 15vw;
+    height: auto;
 }
 
 /* السلايدر */
@@ -20,18 +39,20 @@ body {
     position: relative;
     max-width: 100%;
     margin: auto;
+    padding: 20px 10px;
+    box-sizing: border-box;
 }
 
-/* المسار */
 .slider-track {
     display: flex;
     gap: 25px;
     padding-bottom: 20px;
     overflow-x: auto;
     scroll-behavior: smooth;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-/* إخفاء سكرول */
 .slider-track::-webkit-scrollbar {
     display: none;
 }
@@ -44,14 +65,13 @@ body {
     margin-bottom: 25px;
     box-shadow: none;
     border: 1px solid rgba(255,255,255,0.05);
-    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    box-sizing: border-box;
 }
 
-/* الصور */
 .device-wrapper {
     position: relative;
     margin-bottom: 20px;
@@ -76,13 +96,13 @@ body {
 .img-2 { bottom: -20px; right: 34%; transform: rotate(2deg); }
 .img-3 { bottom: -40px; left: 5px; transform: rotate(-1deg); }
 
-/* النص */
 .text-box h2 {
     color: #fff;
     font-size: 32px;
     font-weight: 900;
     margin: 10px 0 5px 0;
 }
+
 .text-box p {
     color: rgba(255,255,255,0.8);
     font-size: 17px;
@@ -117,12 +137,10 @@ body {
         align-items: center;
         justify-content: center;
     }
-
     .slider-track {
         flex-direction: row;
         overflow-x: hidden;
     }
-
     .klaf-card {
         flex: 0 0 32%;
         max-width: 32%;
@@ -130,45 +148,34 @@ body {
     }
 }
 
-/* ⭐⭐ تصغير التصميم للجوال ⭐⭐ */
+/* الجوال */
 @media (max-width: 819px) {
-
     .slider-track {
         flex-direction: column;
         overflow-x: hidden;
         gap: 10px;
         padding-bottom: 10px;
         align-items: center;
-
-        transform: scale(0.88);        /* ← تصغير التصميم */
-        transform-origin: top center;  /* حتى يكون ثابت وما يميل */
     }
-
     .klaf-card {
         width: 95% !important;
         max-width: 95% !important;
         margin: 0 auto 15px auto;
         padding: 18px 12px;
     }
-
-    .text-box h2 {
-        font-size: 22px;
-    }
-
-    .text-box p {
-        font-size: 14px;
-    }
-
-    .small-img {
-        width: 32%;
-    }
+    .text-box h2 { font-size: 22px; }
+    .text-box p { font-size: 14px; }
+    .small-img { width: 32%; }
 }
 </style>
 </head>
 <body>
 
-<div class="slider-container">
+<header class="klaf-header">
+    <img src="https://raw.githubusercontent.com/KH515/KLAF/main/Image/logo.png" alt="KLAF Logo">
+</header>
 
+<div class="slider-container">
     <button class="slider-btn btn-left">❮</button>
     <button class="slider-btn btn-right">❯</button>
 
@@ -248,7 +255,6 @@ body {
 </div>
 
 <script>
-/* حركة الصور الصغيرة */
 const imgs = document.querySelectorAll('.small-img');
 setInterval(() => {
     imgs.forEach(img => {
@@ -264,7 +270,6 @@ setInterval(() => {
     });
 }, 2000);
 
-/* أزرار السلايدر */
 const track = document.querySelector(".slider-track");
 document.querySelector(".btn-right").onclick = () => track.scrollLeft += 350;
 document.querySelector(".btn-left").onclick = () => track.scrollLeft -= 350;
