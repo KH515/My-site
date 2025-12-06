@@ -23,7 +23,7 @@ html, body {
 .klaf-header {
     width: 100%;
     display: flex;
-    justify-content: flex-start; /* اللوقو على اليسار */
+    justify-content: flex-start;
     padding: 10px 20px;
     background: transparent;
 }
@@ -63,8 +63,6 @@ html, body {
     border-radius: 30px;
     padding: 35px 25px;
     margin-bottom: 25px;
-    box-shadow: none;
-    border: 1px solid rgba(255,255,255,0.05);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -88,7 +86,6 @@ html, body {
     position: absolute;
     width: 30%;
     border-radius: 16px;
-    box-shadow: 0 0 25px rgba(0,0,0,0.35);
     transition: transform 2s ease;
 }
 
@@ -109,7 +106,7 @@ html, body {
     margin: 0;
 }
 
-/* أزرار */
+/* أزرار السلايدر */
 .slider-btn {
     display: none;
     position: absolute;
@@ -130,21 +127,38 @@ html, body {
 .btn-left { left: 10px; }
 .btn-right { right: 10px; }
 
-/* وضع اللابتوب */
+/* الأجهزة الكبيرة */
 @media (min-width: 820px) {
     .slider-btn {
         display: flex;
         align-items: center;
         justify-content: center;
     }
+
     .slider-track {
         flex-direction: row;
         overflow-x: hidden;
     }
+
     .klaf-card {
-        flex: 0 0 32%;
-        max-width: 32%;
+        flex: 0 0 30%;
+        max-width: 30%;
         margin-bottom: 0;
+        padding: 25px;
+        border: none; /* إزالة الإطار */
+        box-shadow: none; /* إزالة الظل */
+    }
+
+    .main-img {
+        border-radius: 16px;
+        width: 100%;
+    }
+
+    .text-box h2 {
+        font-size: 28px;
+    }
+    .text-box p {
+        font-size: 16px;
     }
 }
 
