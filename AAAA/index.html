@@ -9,7 +9,7 @@
 
 <style>
 body {
-    background: transparent; /* خلفية شفافة */
+    background: #000; /* ← خلفية سوداء */
     padding: 20px 10px;
     font-family: "Tajawal", sans-serif;
     margin: 0;
@@ -38,17 +38,17 @@ body {
 
 /* البطاقة */
 .klaf-card {
-    background: transparent; /* الخلفية شفافة */
+    background: transparent;
     border-radius: 30px;
     padding: 35px 25px;
     margin-bottom: 25px;
-    box-shadow: none; /* إزالة الظل */
-    border: 1px solid rgba(255,255,255,0.05); /* الإطار يبقى */
+    box-shadow: none;
+    border: 1px solid rgba(255,255,255,0.05);
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center; /* يوسّط المحتوى */
-    text-align: center; /* النص في الوسط */
+    align-items: center;
+    text-align: center;
 }
 
 /* الصور */
@@ -112,7 +112,6 @@ body {
 
 /* وضع اللابتوب */
 @media (min-width: 820px) {
-
     .slider-btn {
         display: flex;
         align-items: center;
@@ -131,32 +130,37 @@ body {
     }
 }
 
-/* بطاقات الجوال — تحت بعض */
+/* ⭐⭐ تصغير التصميم للجوال ⭐⭐ */
 @media (max-width: 819px) {
+
     .slider-track {
         flex-direction: column;
         overflow-x: hidden;
-        gap: 15px; /* فرق أصغر بين البطاقات */
+        gap: 10px;
         padding-bottom: 10px;
-        align-items: center; /* يوسّط البطاقات */
+        align-items: center;
+
+        transform: scale(0.88);        /* ← تصغير التصميم */
+        transform-origin: top center;  /* حتى يكون ثابت وما يميل */
     }
 
     .klaf-card {
-        width: 95% !important; /* تقريبًا كامل عرض الشاشة */
+        width: 95% !important;
         max-width: 95% !important;
-        margin: 0 auto 20px auto; /* يوسّط البطاقة في المنتصف */
-        padding: 25px 15px; /* تقليل الحشو للجوّال */
+        margin: 0 auto 15px auto;
+        padding: 18px 12px;
     }
 
     .text-box h2 {
-        font-size: 24px; /* تصغير العنوان */
+        font-size: 22px;
     }
+
     .text-box p {
-        font-size: 15px; /* تصغير النص */
+        font-size: 14px;
     }
 
     .small-img {
-        width: 35%; /* تعديل حجم الصور الصغيرة */
+        width: 32%;
     }
 }
 </style>
@@ -165,7 +169,6 @@ body {
 
 <div class="slider-container">
 
-    <!-- أزرار -->
     <button class="slider-btn btn-left">❮</button>
     <button class="slider-btn btn-right">❯</button>
 
