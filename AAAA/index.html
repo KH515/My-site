@@ -9,8 +9,8 @@
 
 <style>
 body {
-    background: #000;
-    padding: 30px 10px;
+    background: transparent; /* خلفية شفافة */
+    padding: 20px 10px;
     font-family: "Tajawal", sans-serif;
     margin: 0;
 }
@@ -36,35 +36,26 @@ body {
     display: none;
 }
 
-/* بطاقات الجوال — تحت بعض */
-@media (max-width: 819px) {
-    .slider-track {
-        flex-direction: column;
-        overflow-x: hidden;
-    }
-
-    .klaf-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        flex: unset !important;
-    }
-}
-
 /* البطاقة */
 .klaf-card {
-    background: #0b0b0b;
+    background: transparent; /* الخلفية شفافة */
     border-radius: 30px;
     padding: 35px 25px;
     margin-bottom: 25px;
-    box-shadow: 0 0 80px rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: none; /* إزالة الظل */
+    border: 1px solid rgba(255,255,255,0.05); /* الإطار يبقى */
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* يوسّط المحتوى */
+    text-align: center; /* النص في الوسط */
 }
 
 /* الصور */
 .device-wrapper {
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 .main-img {
@@ -86,15 +77,16 @@ body {
 .img-3 { bottom: -40px; left: 5px; transform: rotate(-1deg); }
 
 /* النص */
-.text-box { text-align: center; }
 .text-box h2 {
     color: #fff;
     font-size: 32px;
     font-weight: 900;
+    margin: 10px 0 5px 0;
 }
 .text-box p {
     color: rgba(255,255,255,0.8);
     font-size: 17px;
+    margin: 0;
 }
 
 /* أزرار */
@@ -136,6 +128,35 @@ body {
         flex: 0 0 32%;
         max-width: 32%;
         margin-bottom: 0;
+    }
+}
+
+/* بطاقات الجوال — تحت بعض */
+@media (max-width: 819px) {
+    .slider-track {
+        flex-direction: column;
+        overflow-x: hidden;
+        gap: 15px; /* فرق أصغر بين البطاقات */
+        padding-bottom: 10px;
+        align-items: center; /* يوسّط البطاقات */
+    }
+
+    .klaf-card {
+        width: 95% !important; /* تقريبًا كامل عرض الشاشة */
+        max-width: 95% !important;
+        margin: 0 auto 20px auto; /* يوسّط البطاقة في المنتصف */
+        padding: 25px 15px; /* تقليل الحشو للجوّال */
+    }
+
+    .text-box h2 {
+        font-size: 24px; /* تصغير العنوان */
+    }
+    .text-box p {
+        font-size: 15px; /* تصغير النص */
+    }
+
+    .small-img {
+        width: 35%; /* تعديل حجم الصور الصغيرة */
     }
 }
 </style>
